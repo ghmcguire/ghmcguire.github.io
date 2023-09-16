@@ -1,0 +1,48 @@
+<!-- A contact page with my linkedin and email address -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gabe McGuire</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css">  -->
+    <script defer src="https://unpkg.com/@barba/core"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"> 
+    <script defer src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    <script defer src="script.js"></script>
+</head>
+<body data-barba="wrapper">
+    <div data-scroll-container class="wrapper">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="works.html">Works</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+        <main data-barba="container" data-barba-namespace="contact">
+            <div id="mainContentContact" class="mainContent dynamicBackground">
+                <div id="contactCard" class="darkCard">
+                    <h2>Get in touch</h2>
+                    <p>Feel free to reach out to me on LinkedIn or email me at 
+                        <a href="mailto:hello@gabemcg.dev"> hello@gabemcg.dev</a>
+                    </p>
+                    <div class="socials">
+                        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="gabe-mcguire" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/gabe-mcguire?trk=profile-badge"></a></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
