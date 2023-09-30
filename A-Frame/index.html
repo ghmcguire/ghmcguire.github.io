@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="UTF-8">
+    <title>A-Frame Example</title>
+    <meta name="FirstA-Frame" content="Hello, A-Frame!">
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-entity position="0 0 10">
+            <a-camera active="true">
+            </a-camera>
+        </a-entity>
+        <!--Background Wall-->
+        <a-box position="0 -1.25 -10" width="15" height="20" depth="1" rotation="0 0 0" color="#dddbdc"></a-box>
+        <!--Floor-->
+        <a-box material="src:image/texture.png; repeat: 1 2" position="0 -11 0" width="15" height="0.5" depth="20" color="white"></a-box>
+        <!--Side Walls-->
+        <a-box position="-7.25 -1 5" width="0.5" height="20" depth="10" color="#dddbdc"></a-box>
+        <a-box position="7.25 -1 5" width="0.5" height="20" depth="10" color="#dddbdc"></a-box>
+        <!--Roof-->
+        <a-box position="0 9 0" width="15" height="0.5" depth="20" color="#f5f5f5"></a-box>
+        <!--Wall Decor-->
+        <a-box position="0 -10.25 -9.25" width="15" height="1" depth="0.5"></a-box> 
+        <a-box position="-6.75 -10.25 5" width="0.5" height="1" depth="10"></a-box>
+        <a-box position="6.75 -10.25 5" width="0.5" height="1" depth="10"></a-box>
+        <!--Door Frames-->
+        <a-box position="-7.25 6.5 -5" width="0.5" depth="10" height="5" color="#dddbdc"></a-box>
+        <a-box position="7.25 6.5 -5" width="0.5" depth="10" height="5" color="#dddbdc"></a-box>
+        <a-box position="-6.75 -3.25 0.25" width="0.5" depth="0.5" height="14.5" color="white"></a-box>
+        <a-box position="6.75 -3.25 0.25" width="0.5" depth="0.5" height="14.5" color="white"></a-box>
+        <a-box position="-6.75 4.25 -4.5" width="0.5" depth="10" height="0.5"></a-box>
+        <a-box position="6.75 4.25 -4.5" width="0.5" depth="10" height="0.5"></a-box>
+        <a-box position="-6.75 -3.25 -9.25" width="0.5" depth="0.5" height="14.5"></a-box>
+        <a-box position="6.75 -3.25 -9.25" width="0.5" depth="0.5" height="14.5"></a-box>
+
+        <!-- Ambient Lighting -->
+        <a-light type="ambient" intensity="0.2" color="#FFFFCC"></a-light>
+        <a-light type="ambient" intensity="0.7" color="#E5E4E2"></a-light>
+      
+        <!-- Spotlight (Pointing from the Door to the Left of the Painting) -->
+        <a-light type="point" position="-14 -4 -5" intensity="0.8" angle="60" distance="200" decay="10" color="#FFFFCC" rotation="0 -15 0" penumbra="0.1" ></a-light>
+        <a-light type="spot" position="-14 -4 -5" intensity="1" angle="60" distance="2000" decay="10" color="#E5E4E2" rotation="0 -15 0" penumbra="0.1" ></a-light>
+
+        <!--****************
+            Actual Painting
+       ***************** -->
+        <!-- Painting White Boxes-->
+        <a-box position="-3 1 -9.5" width="2" height="5" depth="0.5" color="#fefff6"></a-box>
+        <a-box position="-0.25 2 -9.5" width="3" height="3" depth="0.5" color="#fefff6"></a-box>
+        <a-box position="2.25 2 -9.5" width="1.5" height="3" depth="0.5" color="#fefff6"></a-box>
+        <a-box position="4 2 -9.5" width="1.5" height="3" depth="0.5" color="#fefff6"></a-box>
+        <a-box position="3.125 4.75 -9.5" width="3.25" height="2" depth="0.5" color="#fefff6"></a-box>
+        <a-box position="0.625 -0.625 -9.5" width="4.75" height="1.75" depth="0.5" color="#fefff6"></a-box>
+        <a-box position="0.625 -3 -9.5" width="4.75" height="2.5" depth="0.5" color="#fefff6"></a-box>
+        <a-box position="0.625 -5.45 -9.5" width="4.75" height="1.775" depth="0.5" color="#fefff6"></a-box>
+
+        <!-- Painting Lines in between boxes-->
+        <a-box position="-4.125 -.375 -9.5" width=".25" height="12.25" depth="0.5" color="#131418"></a-box>
+        <a-box position="-1.875 -1.5 -9.5" width=".225" height="11" depth="0.5" color="#131418"></a-box>
+        <a-box position="1.36 3.05 -9.5" width=".225" height="5.4" depth="0.5" color="#131418"></a-box>
+        <a-box position="3.125 -1.75 -9.5" width=".225" height="10.5" depth="0.5" color="#131418"></a-box>
+        <a-box position="0 3.61 -9.5" width="9.5" height=".225" depth="0.5" color="#131418"></a-box>
+        <a-box position="1.5 0.375 -9.5" width="6.5" height=".225" depth="0.5" color="#131418"></a-box>
+        <a-box position="-.875 -1.635 -9.5" width="7.75" height=".225" depth="0.5" color="#131418"></a-box>
+        <a-box position="0.25 -4.4 -9.5" width="9" height=".225" depth="0.5" color="#131418"></a-box>
+        <a-box position="1.5 -6.5 -9.5" width="6.5" height=".225" depth="0.5" color="#131418"></a-box>
+        <a-box position="-3.25 -6.35 -9.5" width="2.5" height=".225" depth="0.5" color="#131418"></a-box>
+
+        <!-- Painting Red Boxes-->
+        <a-box position="-4.5 1 -9.5" width="0.5" height="5" depth="0.5" color="#992f1b"></a-box>
+        <a-box position="-4.5 4.75 -9.5" width="0.5" height="2" depth="0.5" color="#992f1b"></a-box>
+
+        <!-- Painting Cyan Boxes-->
+        <a-box position="-3 -3 -9.5" width="2" height="2.5" depth="0.5" color="#94a7b3"></a-box>
+        <a-box position="-4.5 -4.375 -9.5" width="0.5" height="5.25" depth="0.45" color="#94a7b3"></a-box>
+        <a-box position="-3.25 -6.75 -9.5" width="2.5" height="0.5" depth="0.5" color="#94a7b3"></a-box>
+        <a-box position="0.625 -6.875 -9.5" width="4.75" height="0.25" depth="0.5" color="#94a7b3"></a-box>
+        <a-box position="-1.375 5.65 -9.5" width="5.25" height=".225" depth="0.55" color="#94a7b3"></a-box>
+
+        <!-- Painting Misc Boxes-->
+        <a-box position="-3 -5.375 -9.5" width="2" height="1.75" depth="0.5" color="#213468"></a-box>
+        <a-box position="4 -2 -9.5" width="1.5" height="4.5" depth="0.5" color="#cdaf45"></a-box>
+
+        <!-- Painting Black Boxes-->
+        <a-box position="4 -5.75 -9.5" width="1.5" height="2.5" depth="0.5" color="#131418"></a-box>
+        <a-box position="-1.375 4.75 -9.5" width="5.25" height="2" depth="0.5" color="#131418"></a-box>
+
+        <!--Right Table-->
+        <a-box material="src:image/texture.png; repeat: .2 .5; roughness:.5; color: #9e9063 " position="4.9 -3.75 7.5" width="3.25" depth="5.25" height="0.1" ></a-box>
+        <a-box position="5 -4 7.5" width="3" depth="5" height="0.5" material="src:image/metal.jpg; roughness:1; metalness: .5; color: #2e2c2b"></a-box>
+        <a-box position="3.75 -7.5 5.25" width="0.5" depth="0.5" height="6.5"  material="src:image/metal.jpg; roughness:1; metalness: .5; color: #2e2c2b"></a-box>
+        <a-box position="6.25 -7.5 5.25" width="0.5" depth="0.5" height="6.5"  material="src:image/metal.jpg; roughness:1; metalness: .5; color: #2e2c2b"></a-box>
+        <a-box position="6.25 -7.5 9.75" width="0.5" depth="0.5" height="6.5"  material="src:image/metal.jpg; roughness:1; metalness: .5; color: #2e2c2b"></a-box>
+        <a-box position="3.75 -7.5 9.75" width="0.5" depth="0.5" height="6.5"  material="src:image/metal.jpg; roughness:1; metalness: .5; color: #2e2c2b"></a-box>
+
+        <!--Items In Table-->
+        <a-cylinder position="5 -2.25 7" color="black" height="3" radius="0.5"></a-cylinder>
+        <a-sphere position="5 -2.75 5.5" color="green" radius="1"></a-sphere>
+        <a-box position="5 -3.35 8.5" width="1" depth="1" height="0.5" color="#CD7F32"></a-box>
+        <a-box position="5 -2.75 8.5" width="0.75" depth="0.75" height="0.75" color="#CD7F32"></a-box>
+        
+        <!--Leaves?-->
+        <a-mesh geometry="cylinderGeometry(10 10 10)"></a-mesh>
+    </a-scene>
+</body>
