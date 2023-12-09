@@ -101,10 +101,17 @@ const conicGradientImg = document.querySelector("#heroImgContainer");
 
 document.addEventListener("mousemove", (e) => {
 
-    const x = e.clientX - conicGradient.offsetLeft;
-    const y = e.clientY - conicGradient.offsetTop;
+    // const x = e.clientX - conicGradient.offsetLeft;
+    // const y = e.clientY - conicGradient.offsetTop;
+    // const x = e.clientX/window.innerWidth - conicGradient.offsetLeft;
+    // const y = e.clientY/window.innerHeight - conicGradient.offsetTop;
+    const x = e.clientX/window.innerWidth - conicGradient.offsetLeft;
+    const y = e.clientY/window.innerHeight - conicGradient.offsetTop;
+    console.log(e);
 
     conicGradient.style.background = "conic-gradient(from 180deg at " + (x * 100) + "%" + (y * 100) + "%, #CCEFFB 0deg, #B1FBD7 57.43deg, #FFFCBB 131.25deg, #FFCFF2 207.93deg, #E0B8FF 280.32deg, #CCEFFB 360deg)";
+    // conicGradient.style.background = "conic-gradient(from 180deg at " + e.screenX + "px " + e.clientY + "px, #CCEFFB 0deg, #B1FBD7 57.43deg, #FFFCBB 131.25deg, #FFCFF2 207.93deg, #E0B8FF 280.32deg, #CCEFFB 360deg)";
+
     // conicGradientImg.setAttribute("style",  "conic-gradient(from 180deg at " + (x * 100) + "%" + (y * 100) + "%, #CCEFFB 0deg, #B1FBD7 57.43deg, #FFFCBB 131.25deg, #FFCFF2 207.93deg, #E0B8FF 280.32deg, #CCEFFB 360deg)");
 } 
 );
