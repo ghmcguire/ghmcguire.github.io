@@ -1,0 +1,21 @@
+<div class="row justify-content-center align-items-center p-4 h-100">
+  <div class="col-lg-4 col-md-6 text-start mt-4">
+    <div class="wow animated slideInUp">
+      <h1 class="mt-n2">Hey,</h1>
+      <h1 class="" data-wow-delay=".1s">I'm {{ site.author.first-name }}</h1>
+      <!-- dividing line that spans across -->
+      <hr class="mt-4 mt-n2 wow animated slideAcross" style="background:#D1D1D1;" data-wow-delay=".15s">
+    </div>
+      <p class="wow animated slideInUp" data-wow-delay=".15s" >{{ site.description }} <!--style="color:#D1D1D1;"--></p>
+      <a class="btn btn-outline-primary w-100 wow animated fadeInUp" data-wow-delay=".25s" href="projects"> See What I've Made</a>
+  </div>
+    <div class="col-lg-4 col-md-6 text-center mt-4">
+      <!-- Fine Circle Responsive Image -->
+      <div id="container" class="my-2">
+        <div id="dummy"></div>
+        <div id="element" class="headshot-holder circle-image wow animated slideInUp" data-wow-delay=".1s">
+          <img src="{{ site.author.image }}" alt="{{ site.title }} Portrait" class="circle-image">
+        </div>
+      </div>
+    </div>
+</div>
