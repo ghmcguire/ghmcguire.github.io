@@ -12,7 +12,7 @@
 #   color : 444444
 
 email:
-  url   : "mailto:hello@gabemcg.dev"
+  url   : "mailto:"
   icon  : fas fa-envelope
   color : db4437
 
@@ -22,7 +22,7 @@ email:
 #   color : 3b5998
 
 github:
-  url   : https://www.github.com/ghmcguire
+  url   : https://www.github.com/
   icon  : fab fa-github
   color : 333333
 
@@ -42,7 +42,7 @@ github:
 #   color : 20beff
 
 linkedin:
-  url   : https://www.linkedin.com/in/gabe-mcguire
+  url   : https://www.linkedin.com/in/
   icon  : fab fa-linkedin-in
   color : 007bb5
 
