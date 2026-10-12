@@ -2,19 +2,19 @@
 import Icons from './Icons.astro';
 ---
 
-<header class="w-full max-w-6xl mx-auto px-6 py-6 flex items-center justify-between border-b border-white/5">
+<header class="w-full max-w-6xl mx-auto px-6 py-5 sm:py-6 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-6 border-b border-white/5">
   <!-- Brand Title -->
-  <a href="#" class="group flex items-baseline gap-2.5">
-    <span class="font-editorial text-xl sm:text-2xl text-[#ede8e1] tracking-wide group-hover:text-white transition-colors">
+  <a href="#" class="group flex items-baseline gap-2">
+    <span class="font-editorial text-2xl sm:text-2xl text-[#ede8e1] tracking-wide group-hover:text-white transition-colors">
       Gabe McGuire
     </span>
-    <span class="hidden sm:inline font-editorial italic text-sm text-[#d4ded7]/45 font-light tracking-normal group-hover:text-[#d4ded7]/70 transition-colors">
+    <span class="font-editorial italic text-sm text-[#d4ded7]/45 font-light tracking-normal group-hover:text-[#d4ded7]/70 transition-colors">
       Design Engineer
     </span>
   </a>
 
   <!-- Navigation Links: All consistent in-page actions -->
-  <nav class="flex items-center gap-6 sm:gap-8 font-sans text-xs uppercase tracking-widest text-[#d4ded7]/70">
+  <nav class="flex items-center justify-center flex-wrap gap-5 sm:gap-8 font-sans text-xs uppercase tracking-widest text-[#d4ded7]/70">
     <a href="#projects" class="hover:text-white transition-colors">Projects</a>
     <a href="#about" class="hover:text-white transition-colors">About</a>
     <a href="#experience" class="hover:text-white transition-colors">Timeline</a>
@@ -24,7 +24,7 @@ import Icons from './Icons.astro';
       href="https://rxresu.me/mcguiregh/design-engineer" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="hover:text-white transition-colors flex items-center gap-1.5 uppercase font-sans text-xs tracking-widest"
+      class="hover:text-white transition-colors flex items-center gap-1.5 uppercase font-sans text-xs tracking-widest text-[#d4ded7]/90"
       title="View live Reactive Resume"
     >
       <span>Resume</span>
@@ -34,6 +34,5 @@ import Icons from './Icons.astro';
         <line x1="10" y1="14" x2="21" y2="3"/>
       </svg>
     </a>
-
   </nav>
 </header>
