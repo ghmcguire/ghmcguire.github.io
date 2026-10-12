@@ -1,0 +1,47 @@
+---
+import Icons from './Icons.astro';
+---
+
+<footer class="border-t border-white/5 py-16 max-w-6xl mx-auto px-6 text-sm">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+    <!-- Left -->
+    <div class="space-y-2">
+      <span class="font-display text-2xl text-[#ede8e1] block">
+        Gabe McGuire
+      </span>
+      <p class="font-editorial text-base text-[#d4ded7]/60">
+        Design Engineer &bull; Co-Founder at Munio &bull; Georgia Tech
+      </p>
+    </div>
+
+    <!-- Right: Links -->
+    <div class="flex flex-wrap items-center gap-6 font-sans text-xs uppercase tracking-wider text-[#d4ded7]/70">
+      <button data-copy-email="hello@gabemcg.dev" class="hover:text-white transition-colors cursor-pointer font-sans text-xs uppercase tracking-wider" title="Click to copy email">
+        hello@gabemcg.dev
+      </button>
+      <a href="https://github.com/ghmcguire" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/gabe-mcguire" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+        LinkedIn
+      </a>
+      <a 
+        href="https://rxresu.me/mcguiregh/design-engineer" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="hover:text-white transition-colors uppercase flex items-center gap-1"
+      >
+        <span>Resume</span>
+        <span class="text-[#618c77]">&nearr;</span>
+      </a>
+      <a href="#" class="hover:text-white transition-colors text-white/40">
+        &uarr; Top
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-12 pt-6 border-t border-white/5 flex justify-between items-center text-xs font-editorial text-[#d4ded7]/40">
+    <div>&copy; {new Date().getFullYear()} Gabe McGuire. All rights reserved.</div>
+    <div class="font-sans text-[11px] tracking-wider uppercase text-white/30">gabemcg.dev</div>
+  </div>
+</footer>

@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icons from '../components/Icons.astro';
+---
+
+<Layout title="About Gabe McGuire — UX Designer & Software Engineer" description="About Gabe McGuire: Senior at Georgia Tech studying Computational Media / HCI and Co-Founder / CXO at Munio.">
+  <div class="max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-20 text-left">
+    <!-- Header Hero -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-8 space-y-4">
+        <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold block">
+          About Me
+        </span>
+        <h1 class="font-display text-4xl sm:text-6xl text-[#ede8e1] tracking-tight font-normal leading-tight">
+          Designing with empathy.<br>
+          <span class="italic text-[#d4ded7]">Engineering with rigor.</span>
+        </h1>
+        <p class="font-editorial text-xl text-[#d4ded7]/80 leading-relaxed pt-2">
+          I'm Gabe McGuire. I taught myself how to code when I was 10 years old and have been obsessed with building software ever since.
+        </p>
+      </div>
+
+      <div class="md:col-span-4 flex justify-center">
+        <!-- Rainbow bordered frame with arched cutout -->
+        <div class="rainbow-border p-3 w-40 aspect-[3/4] flex flex-col justify-end overflow-hidden">
+          <div class="w-full h-full rounded-t-full bg-[#f2efe9] arch-glow overflow-hidden flex flex-col justify-end">
+            <img 
+              src="/assets/images/headshot-sunglasses.webp" 
+              alt="Gabe McGuire" 
+              class="w-full object-cover filter grayscale contrast-110 brightness-95"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Narrative Sections -->
+    <div class="space-y-12">
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-4">
+        <h2 class="font-display text-3xl text-[#ede8e1] font-normal pb-2 border-b border-white/10">The Journey</h2>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          Currently, I am a <strong>Senior at the Georgia Institute of Technology</strong>, majoring in <strong>Computational Media</strong> with a concentration in <strong>Human-Computer Interaction (HCI)</strong>.
+        </p>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          At Georgia Tech, I bridge the divide between theoretical computer science and human-centered design. I don't believe design should exist in a vacuum: true UX design must understand the hardware, network constraints, latency, and architecture that powers it.
+        </p>
+      </section>
+
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-4">
+        <h2 class="font-display text-3xl text-[#ede8e1] font-normal pb-2 border-b border-white/10">Munio &amp; Digital Identity</h2>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          In 2023, I co-founded <strong>Munio (Secure Verification Group)</strong>, serving as <strong>Chief Experience Officer (CXO)</strong>. Munio tackles an important emerging design challenge: enabling physical businesses to legally and safely accept cryptographic digital driver's licenses (mDLs) from Apple Wallet, Google Wallet, and Samsung Wallet.
+        </p>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          I designed the tap-to-verify reader flows and engineered client verification apps across iOS (SwiftUI) and Desktop/Android (Compose Multiplatform), ensuring strict compliance with the ISO/IEC 18013-5 standard while preserving a sub-2-second friction-free user interaction.
+        </p>
+      </section>
+
+      <!-- Competencies -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-8">
+        <h2 class="font-display text-3xl text-[#ede8e1] font-normal pb-2 border-b border-white/10">Disciplines</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div class="space-y-4">
+            <h3 class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold">Interaction &amp; Product Design</h3>
+            <ul class="font-editorial text-base text-[#d4ded7]/80 space-y-2">
+              <li class="flex items-center gap-2">&bull; Figma Advanced Components &amp; Auto-Layout</li>
+              <li class="flex items-center gap-2">&bull; Design Systems &amp; Systematic Tokens</li>
+              <li class="flex items-center gap-2">&bull; Qualitative Field Research &amp; User Testing</li>
+              <li class="flex items-center gap-2">&bull; Micro-interactions &amp; Ergonomics</li>
+              <li class="flex items-center gap-2">&bull; WCAG 2.2 AA Accessibility Standards</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold">Software &amp; Creative Engineering</h3>
+            <ul class="font-editorial text-base text-[#d4ded7]/80 space-y-2">
+              <li class="flex items-center gap-2">&bull; Swift, SwiftUI &amp; Apple CoreNFC</li>
+              <li class="flex items-center gap-2">&bull; Kotlin &amp; Compose Multiplatform</li>
+              <li class="flex items-center gap-2">&bull; TypeScript, Modern CSS &amp; Tailwind</li>
+              <li class="flex items-center gap-2">&bull; Astro, React, Ionic Framework</li>
+              <li class="flex items-center gap-2">&bull; ISO 18013-5 mDL Cryptographic Handshakes</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Connect -->
+    <div class="editorial-panel p-10 rounded-sm border border-white/10 text-center space-y-6">
+      <h3 class="font-display text-3xl text-[#ede8e1] font-normal">Let’s connect</h3>
+      <p class="font-editorial text-base text-[#d4ded7]/70 max-w-md mx-auto">
+        Always open to discussing product design, design systems, and digital identity tech.
+      </p>
+      <div class="pt-2 flex justify-center gap-4">
+        <a 
+          href="mailto:hello@gabemcg.dev" 
+          class="font-sans text-xs uppercase tracking-wider px-6 py-2.5 rounded-full bg-[#ede8e1] text-[#131614] hover:bg-white font-semibold transition-colors"
+        >
+          hello@gabemcg.dev
+        </a>
+        <a 
+          href="/assets/resume/Resume.pdf" 
+          target="_blank" 
+          class="font-sans text-xs uppercase tracking-wider px-6 py-2.5 rounded-full border border-white/20 hover:border-white/50 text-[#ede8e1] transition-colors"
+        >
+          Resume (PDF)
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
