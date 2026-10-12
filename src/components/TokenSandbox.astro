@@ -1,0 +1,246 @@
+---
+import Icons from './Icons.astro';
+---
+
+<div id="token-sandbox-drawer" class="fixed inset-y-0 right-0 z-50 w-80 max-w-[90vw] bg-surface-raised/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between overflow-y-auto">
+  <div>
+    <!-- Header -->
+    <div class="flex items-center justify-between pb-4 border-b border-white/10">
+      <div class="flex items-center gap-2">
+        <Icons name="sliders" class="w-4 h-4 text-emerald-400" />
+        <h3 class="font-bold text-sm tracking-wide text-white">Design Token Sandbox</h3>
+      </div>
+      <button id="close-sandbox" class="p-1 rounded-lg text-white/50 hover:text-white hover:bg-white/10 transition-colors">
+        ✕
+      </button>
+    </div>
+
+    <p class="text-xs text-white/60 mt-3 leading-relaxed">
+      Tweak the design system tokens in real-time. The DOM immediately responds via live CSS custom properties.
+    </p>
+
+    <!-- Controls -->
+    <div class="mt-6 space-y-6 text-xs">
+      <!-- 1. Accent Color -->
+      <div>
+        <label class="block font-medium text-white/80 mb-2 font-mono">1. Accent Color</label>
+        <div class="grid grid-cols-4 gap-2">
+          <button class="color-token-btn h-9 rounded-lg border border-white/20 flex items-center justify-center transition-all bg-emerald-500 hover:scale-105" data-color="#10b981" data-name="Munio Emerald" title="Munio Emerald"></button>
+          <button class="color-token-btn h-9 rounded-lg border border-white/20 flex items-center justify-center transition-all bg-violet-500 hover:scale-105" data-color="#8b5cf6" data-name="Electric Violet" title="Electric Violet"></button>
+          <button class="color-token-btn h-9 rounded-lg border border-white/20 flex items-center justify-center transition-all bg-cyan-500 hover:scale-105" data-color="#06b6d4" data-name="Cyber Cyan" title="Cyber Cyan"></button>
+          <button class="color-token-btn h-9 rounded-lg border border-white/20 flex items-center justify-center transition-all bg-amber-500 hover:scale-105" data-color="#f59e0b" data-name="Sunset Amber" title="Sunset Amber"></button>
+        </div>
+      </div>
+
+      <!-- 2. Border Radius -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <label class="font-medium text-white/80 font-mono">2. Corner Radius</label>
+          <span id="radius-val" class="text-emerald-400 font-mono text-[11px]">14px</span>
+        </div>
+        <input 
+          type="range" 
+          id="radius-slider" 
+          min="0" 
+          max="28" 
+          value="14" 
+          class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-white/20 rounded-lg"
+        />
+        <div class="flex justify-between text-[10px] text-white/40 mt-1 font-mono">
+          <span>0px (Sharp)</span>
+          <span>14px</span>
+          <span>28px (Pill)</span>
+        </div>
+      </div>
+
+      <!-- 3. Typography -->
+      <div>
+        <label class="block font-medium text-white/80 mb-2 font-mono">3. Primary Typeface</label>
+        <div class="grid grid-cols-1 gap-2">
+          <button class="font-token-btn py-2 px-3 rounded-lg border border-white/10 bg-white/5 text-left hover:bg-white/10 transition-colors" data-font="'Plus Jakarta Sans', system-ui, sans-serif">
+            <span class="block font-sans text-xs text-white">Plus Jakarta Sans</span>
+            <span class="block text-[10px] text-white/40">Clean, geometric modern UX</span>
+          </button>
+          <button class="font-token-btn py-2 px-3 rounded-lg border border-white/10 bg-white/5 text-left hover:bg-white/10 transition-colors" data-font="'JetBrains Mono', monospace">
+            <span class="block font-mono text-xs text-white">JetBrains Mono</span>
+            <span class="block text-[10px] text-white/40">Technical, developer focused</span>
+          </button>
+          <button class="font-token-btn py-2 px-3 rounded-lg border border-white/10 bg-white/5 text-left hover:bg-white/10 transition-colors" data-font="'Instrument Serif', Georgia, serif">
+            <span class="block font-serif text-xs text-white">Instrument Serif</span>
+            <span class="block text-[10px] text-white/40">Editorial, elegant craft</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4. Glassmorphism Blur -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <label class="font-medium text-white/80 font-mono">4. Backdrop Blur</label>
+          <span id="blur-val" class="text-emerald-400 font-mono text-[11px]">16px</span>
+        </div>
+        <input 
+          type="range" 
+          id="blur-slider" 
+          min="0" 
+          max="32" 
+          value="16" 
+          class="w-full accent-emerald-500 cursor-pointer h-1.5 bg-white/20 rounded-lg"
+        />
+      </div>
+
+      <!-- Live Code Block Preview -->
+      <div class="mt-4 p-3 rounded-lg bg-black/60 border border-white/10 font-mono text-[11px] text-white/80 overflow-x-auto">
+        <div class="text-white/40 mb-1">// Generated CSS Tokens</div>
+        <div class="text-emerald-400" id="css-preview-content">
+          --token-radius: 14px;<br>
+          --token-accent: #10b981;<br>
+          --token-glass-blur: 16px;
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Actions -->
+  <div class="pt-4 border-t border-white/10 flex gap-2">
+    <button id="copy-tokens-btn" class="flex-1 py-2 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-lg shadow-emerald-500/20">
+      <Icons name="copy" class="w-3.5 h-3.5" />
+      <span id="copy-btn-text">Copy Tokens</span>
+    </button>
+    <button id="reset-tokens-btn" class="py-2 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs transition-colors" title="Reset to defaults">
+      Reset
+    </button>
+  </div>
+</div>
+
+<script>
+  const drawer = document.getElementById('token-sandbox-drawer');
+  const toggleBtn = document.getElementById('token-sandbox-toggle');
+  const closeBtn = document.getElementById('close-sandbox');
+  const root = document.documentElement;
+
+  // Drawer Toggle
+  function openSandbox() {
+    drawer?.classList.remove('translate-x-full');
+  }
+
+  function closeSandbox() {
+    drawer?.classList.add('translate-x-full');
+  }
+
+  toggleBtn?.addEventListener('click', () => {
+    if (drawer?.classList.contains('translate-x-full')) {
+      openSandbox();
+    } else {
+      closeSandbox();
+    }
+  });
+
+  closeBtn?.addEventListener('click', closeSandbox);
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (drawer && !drawer.contains(e.target as Node) && !toggleBtn?.contains(e.target as Node)) {
+      closeSandbox();
+    }
+  });
+
+  // Listen for custom trigger from Command Palette
+  window.addEventListener('open-token-sandbox', openSandbox);
+
+  // Token: Border Radius
+  const radiusSlider = document.getElementById('radius-slider') as HTMLInputElement;
+  const radiusVal = document.getElementById('radius-val');
+
+  function updateRadius(val: string) {
+    root.style.setProperty('--token-radius', `${val}px`);
+    if (radiusVal) radiusVal.textContent = `${val}px`;
+    updatePreview();
+  }
+
+  radiusSlider?.addEventListener('input', (e) => {
+    updateRadius((e.target as HTMLInputElement).value);
+  });
+
+  // Token: Accent Color
+  const colorBtns = document.querySelectorAll('.color-token-btn');
+  colorBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const color = btn.getAttribute('data-color') || '#10b981';
+      root.style.setProperty('--token-accent', color);
+      updatePreview();
+    });
+  });
+
+  // Token: Typography
+  const fontBtns = document.querySelectorAll('.font-token-btn');
+  fontBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const font = btn.getAttribute('data-font') || "'Plus Jakarta Sans', system-ui, sans-serif";
+      root.style.setProperty('--token-font', font);
+      document.body.style.fontFamily = font;
+      updatePreview();
+    });
+  });
+
+  // Token: Backdrop Blur
+  const blurSlider = document.getElementById('blur-slider') as HTMLInputElement;
+  const blurVal = document.getElementById('blur-val');
+
+  blurSlider?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value;
+    root.style.setProperty('--token-glass-blur', `${val}px`);
+    if (blurVal) blurVal.textContent = `${val}px`;
+    updatePreview();
+  });
+
+  // Update Preview & Copy
+  function updatePreview() {
+    const preview = document.getElementById('css-preview-content');
+    const r = root.style.getPropertyValue('--token-radius') || '14px';
+    const c = root.style.getPropertyValue('--token-accent') || '#10b981';
+    const b = root.style.getPropertyValue('--token-glass-blur') || '16px';
+    const f = root.style.getPropertyValue('--token-font') || "'Plus Jakarta Sans', system-ui, sans-serif";
+
+    if (preview) {
+      preview.innerHTML = `
+        --token-radius: ${r};<br>
+        --token-accent: ${c};<br>
+        --token-glass-blur: ${b};<br>
+        --token-font: ${f};
+      `;
+    }
+  }
+
+  const copyBtn = document.getElementById('copy-tokens-btn');
+  const copyBtnText = document.getElementById('copy-btn-text');
+
+  copyBtn?.addEventListener('click', () => {
+    const r = root.style.getPropertyValue('--token-radius') || '14px';
+    const c = root.style.getPropertyValue('--token-accent') || '#10b981';
+    const b = root.style.getPropertyValue('--token-glass-blur') || '16px';
+    const f = root.style.getPropertyValue('--token-font') || "'Plus Jakarta Sans', system-ui, sans-serif";
+
+    const cssString = `:root {\n  --token-radius: ${r};\n  --token-accent: ${c};\n  --token-glass-blur: ${b};\n  --token-font: ${f};\n}`;
+    navigator.clipboard.writeText(cssString).then(() => {
+      if (copyBtnText) copyBtnText.textContent = 'Copied!';
+      setTimeout(() => {
+        if (copyBtnText) copyBtnText.textContent = 'Copy Tokens';
+      }, 2000);
+    });
+  });
+
+  // Reset
+  const resetBtn = document.getElementById('reset-tokens-btn');
+  resetBtn?.addEventListener('click', () => {
+    root.style.setProperty('--token-radius', '14px');
+    root.style.setProperty('--token-accent', '#10b981');
+    root.style.setProperty('--token-glass-blur', '16px');
+    root.style.setProperty('--token-font', "'Plus Jakarta Sans', system-ui, sans-serif");
+    document.body.style.fontFamily = "'Plus Jakarta Sans', system-ui, sans-serif";
+    if (radiusSlider) radiusSlider.value = '14';
+    if (radiusVal) radiusVal.textContent = '14px';
+    if (blurSlider) blurSlider.value = '16';
+    if (blurVal) blurVal.textContent = '16px';
+    updatePreview();
+  });
+</script>

@@ -1,0 +1,137 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icons from '../../components/Icons.astro';
+---
+
+<Layout title="Collaborative Video Editor — Gabe McGuire" description="An exploration of how Adobe Premiere Pro could support real-time multi-editor collaboration. Georgia Tech HCI Case Study.">
+  <article class="max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-16 text-left">
+    <!-- Back Button -->
+    <div>
+      <a href="/#projects" class="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#618c77] hover:text-[#7ba690] transition-colors">
+        <span>&larr; Back to all projects</span>
+      </a>
+    </div>
+
+    <!-- Header -->
+    <header class="space-y-4">
+      <span class="font-sans text-xs uppercase tracking-widest text-[#d4ded7]/50 block">
+        Georgia Tech &bull; CS 3750 HCI Case Study
+      </span>
+      <h1 class="font-display text-4xl sm:text-6xl text-[#ede8e1] tracking-tight font-normal leading-tight">
+        Collaborative Video Editor
+      </h1>
+      <p class="font-editorial text-xl text-[#d4ded7]/80 font-normal max-w-2xl">
+        An exploration of how Adobe Premiere Pro could support seamless, real-time multi-editor collaboration without disrupting established professional workflows.
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="px-2.5 py-1 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/60">Figma Prototyping</span>
+        <span class="px-2.5 py-1 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/60">Qualitative User Research</span>
+        <span class="px-2.5 py-1 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/60">Usability Testing</span>
+        <span class="px-2.5 py-1 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/60">Interaction Design</span>
+      </div>
+    </header>
+
+    <!-- Cover Image -->
+    <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+      <img 
+        src="/assets/images/projects/video editor/cover.jpeg" 
+        alt="Collaborative Video Editor Preview" 
+        class="w-full object-cover"
+      />
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-10">
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-4">
+        <h2 class="font-display text-3xl text-[#ede8e1] font-normal pb-2 border-b border-white/10">Project Background</h2>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          In June 2020, I took <strong>CS 3750: Intro to User Interface Design</strong> at Georgia Tech. This hands-on course teaches the rigorous fundamentals of human-computer interaction through a semester-long design cycle. With the shift to remote work during the pandemic, our team of three designers set out to explore how Adobe Premiere Pro could support native, concurrent collaboration for distributed creative teams.
+        </p>
+      </section>
+
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-6">
+        <h2 class="font-display text-3xl text-[#ede8e1] font-normal pb-2 border-b border-white/10">User Research &amp; Insights</h2>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          Through qualitative user interviews with video editors of varying experience levels, three core themes emerged:
+        </p>
+        <ul class="font-editorial text-base text-[#d4ded7]/80 space-y-3 pl-4">
+          <li class="flex items-start gap-2">
+            <span class="text-[#618c77]">&bull;</span>
+            <span><strong>Steep Learning Curve:</strong> Video editing software relies heavily on muscle memory; drastic UI disruptions hurt editor productivity.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#618c77]">&bull;</span>
+            <span><strong>Destructive Overwrite Anxiety:</strong> Editors constantly fear losing project state or having team members overwrite color grades or timeline cuts.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-[#618c77]">&bull;</span>
+            <span><strong>Scattered Feedback:</strong> Contextual feedback was distributed across external chat tools and spreadsheets rather than anchored to the timeline.</span>
+          </li>
+        </ul>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+          <div class="p-4 rounded-sm bg-white/[0.02] border border-white/10 space-y-1">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block">Goal 01</span>
+            <span class="font-editorial text-sm text-[#d4ded7]/80">Integrate within Premiere's existing workspace panel model.</span>
+          </div>
+          <div class="p-4 rounded-sm bg-white/[0.02] border border-white/10 space-y-1">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block">Goal 02</span>
+            <span class="font-editorial text-sm text-[#d4ded7]/80">Provide real-time track presence and granular locking.</span>
+          </div>
+          <div class="p-4 rounded-sm bg-white/[0.02] border border-white/10 space-y-1">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block">Goal 03</span>
+            <span class="font-editorial text-sm text-[#d4ded7]/80">Anchor discussions directly to timeline timestamps.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wireframes -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-4">
+        <h2 class="font-display text-3xl text-[#ede8e1] font-normal pb-2 border-b border-white/10">Ideation &amp; Wireframing</h2>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          We developed initial thumbnail sketches and wireframes to map collaborative affordances into Premiere's panels: shared timeline indicators, live chat docks, and granular permission controls.
+        </p>
+        <div class="rounded-sm overflow-hidden border border-white/10 mt-4">
+          <img 
+            src="/assets/images/projects/video editor/wireframes.jpg" 
+            alt="Collaborative Video Editor Wireframes" 
+            class="w-full object-cover filter grayscale contrast-110"
+          />
+        </div>
+      </section>
+
+      <!-- Interactive Figma Embed -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-white/10">
+          <h2 class="font-display text-3xl text-[#ede8e1] font-normal">Interactive Prototype</h2>
+          <span class="font-sans text-xs uppercase tracking-wider text-[#618c77]">Interactive Embed</span>
+        </div>
+        <p class="font-editorial text-base text-[#d4ded7]/70">
+          Walk through the high-fidelity Figma prototype below. Test adding comments, checking collaborator statuses, and navigating shared sequences:
+        </p>
+        <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl bg-black aspect-video w-full mt-4">
+          <iframe 
+            class="w-full h-full border-0" 
+            src="https://embed.figma.com/proto/fZT2KhayNOHEyhGpARSKBh/CS-3750-Prototype?node-id=0-3&p=f&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&embed-host=share" 
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-4">
+        <h2 class="font-display text-3xl text-[#ede8e1] font-normal pb-2 border-b border-white/10">Outcomes &amp; Evaluation</h2>
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          During usability evaluation, experienced video editors validated that non-destructive track locking and in-timeline feedback prevented conflict anxiety. One participant noted that integrating chat into the toolbar resolved the need for external communication tools while editing.
+        </p>
+      </section>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="pt-8 border-t border-white/10 flex justify-between items-center font-sans text-xs uppercase tracking-wider">
+      <a href="/#projects" class="text-white/60 hover:text-white transition-colors">&larr; Back to all projects</a>
+      <a href="mailto:hello@gabemcg.dev" class="text-[#618c77] hover:text-[#7da992] transition-colors">Discuss this project &rarr;</a>
+    </div>
+  </article>
+</Layout>

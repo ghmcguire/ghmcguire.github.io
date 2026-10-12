@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import MetricsRibbon from '../components/MetricsRibbon.astro';
+import ProjectsGrid from '../components/ProjectsGrid.astro';
+import MunioInteractiveDemo from '../components/MunioInteractiveDemo.astro';
+import AboutSection from '../components/AboutSection.astro';
+import PhilosophyVenn from '../components/PhilosophyVenn.astro';
+import Timeline from '../components/Timeline.astro';
+---
+
+<Layout>
+  <!-- Hero Section matching Intro Slide.jpg -->
+  <Hero />
+
+  <!-- High-Impact Contrast Metric Callouts -->
+  <MetricsRibbon />
+
+  <!-- Selected Portfolio Projects -->
+  <ProjectsGrid />
+
+  <!-- Munio Interactive Hardware & Protocol Demo -->
+  <MunioInteractiveDemo />
+
+  <!-- In-Page About Section -->
+  <AboutSection />
+
+  <!-- Design & Engineering Philosophy -->
+  <PhilosophyVenn />
+
+  <!-- Experience & Education Timeline -->
+  <Timeline />
+
+  <!-- Connect Section -->
+  <section id="contact" class="py-24 max-w-6xl mx-auto px-6 border-t border-white/5">
+    <div class="editorial-panel p-10 sm:p-16 rounded-sm border border-white/10 text-center max-w-3xl mx-auto space-y-6">
+      <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold block">
+        Let’s Connect
+      </span>
+
+      <h2 class="font-display text-4xl sm:text-5xl text-[#ede8e1] tracking-tight font-normal">
+        Looking for a design engineer who speaks both languages?
+      </h2>
+
+      <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+        Whether you want to discuss interaction design, digital identity protocols, or opportunities for product leadership, my inbox is always open.
+      </p>
+
+      <div class="pt-4 flex flex-wrap justify-center items-center gap-4">
+        <button 
+          data-copy-email="hello@gabemcg.dev"
+          class="font-sans text-xs uppercase tracking-wider px-6 py-3 rounded-full bg-[#ede8e1] text-[#131614] hover:bg-white font-semibold transition-colors cursor-pointer"
+          title="Click to copy email"
+        >
+          hello@gabemcg.dev
+        </button>
+        <a 
+          href="https://www.linkedin.com/in/gabe-mcguire" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="font-sans text-xs uppercase tracking-wider px-6 py-3 rounded-full border border-white/20 hover:border-white/50 text-[#ede8e1] hover:bg-white/5 transition-colors"
+        >
+          LinkedIn &rarr;
+        </a>
+        <a 
+          href="https://rxresu.me/mcguiregh/design-engineer" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="font-sans text-xs uppercase tracking-wider px-6 py-3 rounded-full border border-white/20 hover:border-white/50 text-[#ede8e1] hover:bg-white/5 transition-colors flex items-center gap-1.5"
+        >
+          <span>Resume</span>
+          <span class="text-[#618c77]">&nearr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

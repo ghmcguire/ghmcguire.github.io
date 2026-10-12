@@ -1,0 +1,135 @@
+---
+import Icons from './Icons.astro';
+
+const projects = [
+  {
+    id: 'munio',
+    number: '01',
+    title: 'Munio',
+    role: 'Co-Founder & Chief Experience Officer',
+    description: 'The easiest platform for law enforcement to accept digital IDs from Apple, Google, and Samsung Wallet.',
+    tags: ['SwiftUI', 'Compose Multiplatform', 'ISO 18013-5 mDL', 'CAD Integration'],
+    image: '/assets/images/projects/munio/cover.jpeg',
+    link: 'https://MunioID.com',
+    isExternal: true,
+    actionText: 'Explore MunioID.com',
+  },
+  {
+    id: 'home-depot',
+    number: '02',
+    title: 'The Home Depot',
+    role: 'Enterprise UX Design Intern',
+    description: 'Designed an internal enterprise training application to streamline daily onboarding and retail operations for 400,000+ store associates across the US and Canada.',
+    tags: ['Figma', 'Ionic', 'Enterprise UX', 'In-Store User Testing'],
+    image: 'https://corporate.homedepot.com/sites/default/files/image_gallery/THD_logo.jpg',
+    link: '/projects/home-depot',
+    isExternal: false,
+    actionText: 'Unlock Case Study (Passcode)',
+  },
+  {
+    id: 'video-editor',
+    number: '03',
+    title: 'Collaborative Video Editor',
+    role: 'Georgia Tech CS 3750 HCI Project',
+    description: 'An HCI research and interaction design study exploring real-time multi-editor collaboration embedded directly inside Adobe Premiere Pro.',
+    tags: ['Figma Prototype', 'User Interviews', 'Interaction Design', 'HCI Study'],
+    image: '/assets/images/projects/video editor/cover.jpeg',
+    link: '/projects/video-editor',
+    isExternal: false,
+    actionText: 'Read Full Case Study',
+  },
+];
+---
+
+<section id="projects" class="relative py-24 max-w-6xl mx-auto px-6 border-t border-white/5">
+  <!-- Section Title -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
+    <div class="space-y-2">
+      <span class="font-sans text-xs uppercase tracking-widest text-[#d4ded7]/50 block">Selected Portfolio</span>
+      <h2 class="font-display text-4xl sm:text-5xl text-[#ede8e1] tracking-tight font-normal">
+        Featured Projects
+      </h2>
+    </div>
+    <p class="font-editorial text-lg text-[#d4ded7]/70 max-w-md">
+      Bridging user research, cognitive psychology, and rigorous systems architecture.
+    </p>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {projects.map((project) => (
+      <article class="project-card editorial-panel editorial-panel-hover flex flex-col justify-between rounded-sm overflow-hidden border border-white/10 group transition-transform duration-200 ease-out">
+        <div>
+          <!-- Thumbnail Image (Square with cream letterbox for aspect ratio preservation) -->
+          <div class="relative w-full aspect-square overflow-hidden bg-[#ede8e1] border-b border-white/5 flex items-center justify-center p-2">
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              loading="lazy"
+            />
+            <div class="absolute top-3 right-3 font-editorial text-xs text-white/90 px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm border border-white/10">
+              {project.number}
+            </div>
+          </div>
+
+          <!-- Content Padding -->
+          <div class="p-6 space-y-4">
+            <div>
+              <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block mb-1">
+                {project.role}
+              </span>
+              <h3 class="font-display text-2xl sm:text-3xl text-[#ede8e1] font-normal group-hover:text-white transition-colors">
+                {project.title}
+              </h3>
+            </div>
+
+            <p class="font-editorial text-base text-[#d4ded7]/80 leading-relaxed">
+              {project.description}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              {project.tags.map((tag) => (
+                <span class="px-2 py-0.5 rounded border border-white/10 font-sans text-[10px] tracking-wide text-[#d4ded7]/60">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Link -->
+        <div class="p-6 pt-0 border-t border-white/5 mt-6">
+          <a 
+            href={project.link}
+            target={project.isExternal ? "_blank" : "_self"}
+            rel={project.isExternal ? "noopener noreferrer" : ""}
+            class="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#ede8e1] hover:text-[#618c77] transition-colors pt-4 group-hover:translate-x-1 transition-transform"
+          >
+            <span>{project.actionText}</span>
+            <Icons name="arrow-right" class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>('.project-card');
+  cards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotY = (x / (rect.width / 2)) * 4;
+      const rotX = -(y / (rect.height / 2)) * 4;
+      card.style.transform = `perspective(1000px) rotateY(${rotY}deg) rotateX(${rotX}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+    });
+  });
+</script>

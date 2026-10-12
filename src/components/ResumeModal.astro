@@ -1,0 +1,167 @@
+---
+import Icons from './Icons.astro';
+---
+
+<!-- Resume Modal Backdrop -->
+<div 
+  id="resume-modal" 
+  class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 ease-out"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+>
+  <!-- Modal Dialog Container (Slides up from the bottom) -->
+  <div 
+    id="resume-modal-dialog"
+    class="relative w-full max-w-4xl h-[92vh] sm:h-[88vh] bg-[#161a17] border border-white/15 rounded-t-2xl sm:rounded-sm shadow-2xl flex flex-col overflow-hidden transform translate-y-full transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+  >
+    <!-- Modal Header -->
+    <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-[#131614] flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <Icons name="file-text" class="w-4 h-4 text-[#618c77]" />
+        <span class="font-display text-xl sm:text-2xl text-[#ede8e1]">Gabe McGuire &bull; Resume</span>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Live Reactive Resume Link -->
+        <a 
+          href="https://rxresu.me/mcguiregh/design-engineer" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="font-sans text-xs uppercase tracking-wider px-3.5 py-2 rounded-full border border-[#618c77]/40 hover:border-[#618c77] bg-[#618c77]/10 hover:bg-[#618c77]/20 text-[#ede8e1] hover:text-white font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
+          title="Open interactive version on Reactive Resume"
+        >
+          <svg class="w-3.5 h-3.5 text-[#618c77]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          <span class="hidden sm:inline">Reactive Resume</span>
+          <span class="sm:hidden">Live</span>
+        </a>
+
+        <!-- Download Button -->
+        <a 
+          href="/assets/resume/Resume.pdf" 
+          download="Gabe-McGuire-Resume.pdf"
+          class="font-sans text-xs uppercase tracking-wider px-4 py-2 rounded-full bg-[#618c77] hover:bg-[#74a18b] text-black font-semibold flex items-center gap-1.5 transition-colors shadow-md"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" x2="12" y1="15" y2="3"/>
+          </svg>
+          <span class="hidden sm:inline">Download</span>
+          <span>PDF</span>
+        </a>
+
+        <!-- Open direct in new tab -->
+        <a 
+          href="https://rxresu.me/mcguiregh/design-engineer" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors hidden sm:flex"
+          title="Open Reactive Resume in new tab"
+        >
+          <Icons name="external" class="w-4 h-4" />
+        </a>
+
+        <!-- Close Button -->
+        <button 
+          id="close-resume-btn"
+          class="p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+          aria-label="Close modal"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Scrollable Resume Content -->
+    <div class="flex-1 w-full h-full bg-[#0d0f0e] overflow-y-auto p-4 sm:p-8 flex flex-col items-center">
+      <!-- Reactive Resume Status Banner -->
+      <div class="max-w-2xl w-full mb-4 px-4 py-2.5 rounded-sm bg-[#618c77]/10 border border-[#618c77]/25 flex items-center justify-between text-xs font-mono text-[#d4ded7]/80">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#618c77] animate-pulse"></span>
+          <span>Synced with <strong>Reactive Resume</strong></span>
+        </div>
+        <a 
+          href="https://rxresu.me/mcguiregh/design-engineer" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-[#618c77] hover:underline flex items-center gap-1"
+        >
+          <span>rxresu.me/mcguiregh/design-engineer</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+
+      <div class="max-w-2xl w-full shadow-2xl rounded-sm overflow-hidden border border-white/10 bg-white">
+        <!-- High-res rendered image preview for universal 100% browser rendering -->
+        <img 
+          src="/assets/resume/Resume-preview.png" 
+          alt="Gabe McGuire Resume" 
+          class="w-full h-auto object-contain block"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const backdrop = document.getElementById('resume-modal');
+  const dialog = document.getElementById('resume-modal-dialog');
+  const closeBtn = document.getElementById('close-resume-btn');
+
+  function openResume() {
+    if (backdrop && dialog) {
+      backdrop.classList.remove('pointer-events-none');
+      backdrop.classList.remove('opacity-0');
+      backdrop.classList.add('opacity-100');
+
+      dialog.classList.remove('translate-y-full');
+      dialog.classList.add('translate-y-0');
+
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeResume() {
+    if (backdrop && dialog) {
+      dialog.classList.remove('translate-y-0');
+      dialog.classList.add('translate-y-full');
+
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+
+      setTimeout(() => {
+        backdrop.classList.add('pointer-events-none');
+        document.body.style.overflow = '';
+      }, 350);
+    }
+  }
+
+  // Event dispatch listeners
+  window.addEventListener('open-resume-modal', openResume);
+  document.querySelectorAll('[data-open-resume]').forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openResume();
+    });
+  });
+
+  // Close listeners
+  closeBtn?.addEventListener('click', closeResume);
+  backdrop?.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeResume();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop && !backdrop.classList.contains('opacity-0')) {
+      closeResume();
+    }
+  });
+</script>

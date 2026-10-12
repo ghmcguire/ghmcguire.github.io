@@ -1,0 +1,104 @@
+---
+import Icons from './Icons.astro';
+---
+
+<div id="inspector-bar-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300">
+  <div class="glass-pill px-3 py-2 flex items-center gap-2 shadow-2xl border border-white/10 dark:border-white/15 bg-black/75 backdrop-blur-xl">
+    <!-- Mode Switcher -->
+    <div class="flex items-center gap-1 bg-white/5 dark:bg-white/10 p-1 rounded-full text-xs font-medium">
+      <button 
+        id="mode-btn-default" 
+        class="mode-btn px-3 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-white/70 hover:text-white"
+        data-mode="default"
+        title="Standard high-fidelity view"
+      >
+        <Icons name="sparkles" class="w-3.5 h-3.5 text-emerald-400" />
+        <span class="hidden sm:inline">Live</span>
+      </button>
+
+      <button 
+        id="mode-btn-figma" 
+        class="mode-btn px-3 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-white/70 hover:text-white"
+        data-mode="figma"
+        title="Figma Inspect Mode: overlays padding, dimensions & design specs"
+      >
+        <Icons name="figma" class="w-3.5 h-3.5 text-purple-400" />
+        <span class="hidden sm:inline">Figma Inspect</span>
+      </button>
+
+      <button 
+        id="mode-btn-code" 
+        class="mode-btn px-3 py-1.5 rounded-full flex items-center gap-1.5 transition-all text-white/70 hover:text-white"
+        data-mode="code"
+        title="Code Mode: exposes semantic tags & CSS token architecture"
+      >
+        <Icons name="code" class="w-3.5 h-3.5 text-emerald-400" />
+        <span class="hidden sm:inline">&lt;Code /&gt;</span>
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="w-px h-5 bg-white/20"></div>
+
+    <!-- Design Token Sandbox Toggle -->
+    <button 
+      id="token-sandbox-toggle" 
+      class="px-2.5 py-1.5 rounded-full flex items-center gap-1.5 text-xs font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+      title="Customize live design tokens (Border radius, colors, fonts)"
+    >
+      <Icons name="sliders" class="w-3.5 h-3.5 text-amber-400" />
+      <span class="hidden md:inline">Tokens</span>
+    </button>
+
+    <!-- Quick info indicator -->
+    <span class="text-[10px] text-white/40 hidden lg:inline px-1 border-l border-white/10 font-mono">
+      Shift+I
+    </span>
+  </div>
+</div>
+
+<script>
+  // Inspector Mode Logic
+  const modeButtons = document.querySelectorAll('.mode-btn');
+  const body = document.body;
+
+  function setInspectMode(mode: string) {
+    body.setAttribute('data-inspect-mode', mode);
+    localStorage.setItem('user-inspect-mode', mode);
+
+    modeButtons.forEach((btn) => {
+      const btnMode = btn.getAttribute('data-mode');
+      if (btnMode === mode) {
+        btn.classList.add('bg-white/20', 'text-white', 'shadow-sm');
+        btn.classList.remove('text-white/70');
+      } else {
+        btn.classList.remove('bg-white/20', 'text-white', 'shadow-sm');
+        btn.classList.add('text-white/70');
+      }
+    });
+
+    // Notify any listening components
+    window.dispatchEvent(new CustomEvent('inspect-mode-change', { detail: { mode } }));
+  }
+
+  // Initial load
+  const savedMode = localStorage.getItem('user-inspect-mode') || 'default';
+  setInspectMode(savedMode);
+
+  modeButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-mode') || 'default';
+      setInspectMode(mode);
+    });
+  });
+
+  // Keyboard shortcut Shift + I to cycle modes
+  window.addEventListener('keydown', (e) => {
+    if (e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+      const modes = ['default', 'figma', 'code'];
+      const current = body.getAttribute('data-inspect-mode') || 'default';
+      const next = modes[(modes.indexOf(current) + 1) % modes.length];
+      setInspectMode(next);
+    }
+  });
+</script>

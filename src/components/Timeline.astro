@@ -1,0 +1,80 @@
+---
+const timeline = [
+  {
+    role: 'Co-Founder & Chief Experience Officer (CXO)',
+    company: 'Munio (Secure Verification Group)',
+    period: '2023 — Present',
+    description: 'Co-founded Munio to build the premier digital identity reader for public safety, allowing patrol officers to cryptographically verify state-issued mDLs presented via Apple, Google, and Samsung Wallet. Engineered mobile reader apps in SwiftUI and Compose Multiplatform complying with ISO/IEC 18013-5 standards, and designed the Munio Bridge MDT desktop companion for CAD keyboard autofill. First mDL reader deployed by an active agency in Georgia, tested across 5 public safety agencies.',
+    tags: ['SwiftUI & Compose', 'ISO 18013-5 mDL', 'CAD Autofill Bridge', 'Public Safety UX'],
+  },
+  {
+    role: 'Vice President of Design & Media',
+    company: 'iOS Club @ Georgia Tech',
+    period: 'May 2023 — May 2025',
+    description: 'Mentored and led 70+ student designers across 20+ iOS apps, establishing design critique rhythms and reusable, SwiftUI-ready component systems. Designed promotional campaigns driving 25% membership growth.',
+    tags: ['SwiftUI', 'Design Leadership', 'Component Systems', 'Mentorship'],
+  },
+  {
+    role: 'Enterprise UX Design Intern',
+    company: 'The Home Depot',
+    period: 'May 2023 — July 2023',
+    description: 'Spearheaded interaction design for an internal operational training application serving over 400,000 retail store associates across the United States and Canada (internationally supported). Conducted in-store user testing with frontline associates, synthesized field findings, and built reusable enterprise components.',
+    tags: ['Figma', 'Ionic', 'Enterprise UX', 'In-Store Usability Testing'],
+  },
+  {
+    role: 'Systems Analyst Intern',
+    company: 'Shaw Industries',
+    period: 'May 2021 — July 2021',
+    description: 'Audited enterprise cloud systems and maintained infrastructure automations to ensure mission-critical manufacturing platforms remained compliant, secure, and up to date.',
+    tags: ['Cloud Auditing', 'Systems Compliance', 'Process Automation'],
+  },
+  {
+    role: 'B.S. in Computational Media (People & Interaction Design)',
+    company: 'Georgia Institute of Technology',
+    period: '2020 — 2025',
+    description: 'Interdisciplinary degree combining Computer Science (data structures, algorithms, systems) with human-centered interactive media across the People (CS) and Interaction Design (LMC) threads. Graduated May 2025.',
+    tags: ['People Thread (CS)', 'Interaction Design Thread', 'Computer Science'],
+  },
+];
+---
+
+<section id="experience" class="relative py-24 max-w-6xl mx-auto px-6 border-t border-white/5">
+  <div class="space-y-4 mb-16">
+    <span class="font-sans text-xs uppercase tracking-widest text-[#d4ded7]/50 block">Background</span>
+    <h2 class="font-display text-4xl sm:text-5xl text-[#ede8e1] tracking-tight font-normal">
+      Experience &amp; Leadership
+    </h2>
+  </div>
+
+  <div class="space-y-12">
+    {timeline.map((item, index) => (
+      <div class="editorial-panel p-8 rounded-sm border border-white/10 group">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3 border-b border-white/5">
+          <div>
+            <span class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold block mb-1">
+              {item.company}
+            </span>
+            <h3 class="font-display text-2xl text-[#ede8e1] font-normal">
+              {item.role}
+            </h3>
+          </div>
+          <span class="font-editorial text-base text-[#d4ded7]/60">
+            {item.period}
+          </span>
+        </div>
+
+        <p class="font-editorial text-base text-[#d4ded7]/80 leading-relaxed mt-4 max-w-3xl">
+          {item.description}
+        </p>
+
+        <div class="flex flex-wrap gap-2 pt-4">
+          {item.tags.map((tag) => (
+            <span class="px-2 py-0.5 rounded border border-white/10 font-sans text-[10px] tracking-wide text-[#d4ded7]/60">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

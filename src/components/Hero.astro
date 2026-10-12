@@ -1,0 +1,274 @@
+---
+const ctaText = "See What I’ve Made";
+const chars = ctaText.split("");
+---
+
+<section class="relative min-h-[88vh] flex flex-col justify-between max-w-6xl mx-auto px-6 pt-8 pb-12 lg:py-16">
+  <!-- Top spacing / content grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center my-auto">
+    
+    <!-- 1. Right Column on Desktop, Top on Mobile: Signature Rainbow Frame & Interactive Arch -->
+    <div class="lg:col-span-6 order-1 lg:order-2 flex justify-center lg:justify-end">
+      <!-- Outer Rectangular Frame with Rainbow/Prism Border -->
+      <div 
+        id="hero-portrait-frame"
+        class="relative rainbow-border rounded-sm shadow-2xl p-4 sm:p-6 w-[270px] sm:w-[330px] lg:w-[370px] aspect-[3/4.2] flex flex-col justify-end group cursor-crosshair transition-transform duration-300"
+      >
+        <!-- The Arch Vault with Interactive Dynamic Rim Lighting (overflow visible on top so head extends beyond vault) -->
+        <div class="relative w-[190px] sm:w-[240px] lg:w-[270px] mx-auto flex flex-col justify-end">
+          
+          <!-- Background Arch with Cream Gradient Fill and Rim Lighting -->
+          <div 
+            id="hero-arch-vault"
+            class="absolute bottom-0 left-0 right-0 h-[280px] sm:h-[350px] lg:h-[370px] rounded-t-full bg-[#f2efe9] arch-glow overflow-hidden transition-shadow duration-150 ease-out z-0"
+          >
+            <!-- Ambient subtle gradient inside arch -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#ffffff] via-[#f5f2ec] to-[#e8e4dc]"></div>
+          </div>
+
+          <!-- Cutout Image with Sunglasses (Grayscale + High Contrast) extending naturally above arch -->
+          <div class="relative z-10 w-full flex flex-col justify-end overflow-visible">
+            <img 
+              id="hero-portrait-img"
+              src="/assets/images/headshot-sunglasses.webp" 
+              alt="Gabe McGuire Portrait" 
+              class="w-full object-cover object-top filter grayscale contrast-110 brightness-95 transform group-hover:scale-[1.03] transition-transform duration-700 pointer-events-none -mb-1"
+              style="mask-image: linear-gradient(to bottom, black 88%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);"
+            />
+          </div>
+        </div>
+
+        <!-- Frame subtle ambient reflection -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#131614] via-transparent to-transparent pointer-events-none opacity-40"></div>
+      </div>
+    </div>
+
+    <!-- 2. Left Column on Desktop, Bottom on Mobile: Narrative & Drawn Name -->
+    <div class="lg:col-span-6 order-2 lg:order-1 space-y-6 sm:space-y-8 text-left">
+      <!-- Headline with Animated SVG Stroke-to-Fill for "Gabe" (interactive hover group) -->
+      <div id="hero-name-trigger" class="space-y-1 inline-block cursor-default group/name select-none">
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl text-[#ede8e1] tracking-normal font-normal leading-[1.05]">
+          Hey,
+        </h1>
+        
+        <div class="font-display text-5xl sm:text-6xl lg:text-7xl text-[#ede8e1] tracking-normal font-normal leading-[1.05]">
+          <!-- Unified SVG Text ensuring 100% pixel-perfect baseline alignment -->
+          <svg 
+            class="h-[1.15em] w-auto overflow-visible block select-none" 
+            style="aspect-ratio: 290 / 85;"
+            viewBox="0 0 290 85"
+            aria-label="I'm Gabe"
+          >
+            <text 
+              x="0" 
+              y="70" 
+              class="font-display text-[78px] sm:text-[88px] font-normal"
+              font-family="'Instrument Serif', 'Cormorant Garamond', Georgia, serif"
+            >
+              <tspan fill="#ede8e1">I’m </tspan>
+              <tspan id="name-svg-span" class="name-svg-text">Gabe</tspan>
+            </text>
+          </svg>
+        </div>
+
+        <!-- Architectural rule line drawing in from left to right -->
+        <div class="relative w-64 sm:w-80 h-[1.5px] mt-4 mb-6 overflow-hidden">
+          <div id="hero-rule-line" class="hero-rule-line w-full h-full bg-[#D1D1D1]/60"></div>
+        </div>
+      </div>
+
+      <!-- Narrative Text -->
+      <div class="font-editorial text-lg sm:text-xl text-[#d4ded7] font-normal leading-relaxed max-w-md space-y-5">
+        <p>
+          I am a Design Engineer with a passion for creating beautiful, user-friendly websites and applications.
+        </p>
+        <p class="text-base sm:text-lg text-[#d4ded7]/80">
+          My number one priority is creating a seamless user experience. My number two priority is making sure my dreams aren’t developers’ nightmares.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom CTA: "See What I've Made" with Sequential Letter Jump & Elastic Chevron -->
+  <div class="relative pt-12 pb-2 flex justify-center items-center">
+    <a 
+      href="#projects" 
+      class="see-cta font-editorial text-xl sm:text-2xl text-[#d4ded7]/85 hover:text-white transition-colors inline-flex flex-col items-center gap-1.5 cursor-pointer select-none py-2 px-4"
+      aria-label="See What I've Made"
+    >
+      <!-- Sequentially jumping letters -->
+      <div class="flex items-center tracking-wide">
+        {chars.map((char, index) => (
+          <span 
+            class="jump-char inline-block" 
+            style={`--i: ${index};`}
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </span>
+        ))}
+      </div>
+
+      <!-- Elastic stretching down chevron -->
+      <svg 
+        class="elastic-chevron w-5 h-5 text-[#d4ded7]/70" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  /* 1. Name SVG outline drawn in, then filled */
+  .name-svg-text {
+    stroke: #ede8e1;
+    stroke-width: 1.5px;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+    fill: transparent;
+    animation: drawAndFill 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+  }
+
+  @keyframes drawAndFill {
+    0% {
+      stroke-dashoffset: 450;
+      fill: transparent;
+      stroke: #ede8e1;
+    }
+    60% {
+      stroke-dashoffset: 0;
+      fill: transparent;
+      stroke: #ede8e1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      fill: #ede8e1;
+      stroke: transparent;
+    }
+  }
+
+  /* Architectural rule line draw in */
+  .hero-rule-line {
+    transform-origin: left;
+    animation: drawRule 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s backwards;
+  }
+
+  @keyframes drawRule {
+    0% {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  /* 2. Sequential Letter Jump Wave on Hover */
+  .see-cta:hover .jump-char {
+    animation: letterWave 0.45s ease-in-out forwards;
+    animation-delay: calc(var(--i) * 26ms);
+  }
+
+  @keyframes letterWave {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    35% {
+      transform: translateY(-8px);
+      color: #ffffff;
+    }
+    70% {
+      transform: translateY(2px);
+    }
+  }
+
+  /* 3. Elastic Chevron Stretch downward and snap back */
+  .see-cta:hover .elastic-chevron {
+    animation: chevronElastic 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: calc(18 * 26ms + 40ms);
+  }
+
+  @keyframes chevronElastic {
+    0% {
+      transform: translateY(0) scaleY(1);
+    }
+    40% {
+      transform: translateY(12px) scaleY(2.2) scaleX(0.7);
+      color: #ffffff;
+    }
+    75% {
+      transform: translateY(-2px) scaleY(0.9) scaleX(1.1);
+    }
+    100% {
+      transform: translateY(0) scaleY(1) scaleX(1);
+    }
+  }
+</style>
+
+<script>
+  // Interactive pointer tracking rim lighting for the arch & frame
+  const frame = document.getElementById('hero-portrait-frame');
+  const vault = document.getElementById('hero-arch-vault');
+
+  if (frame && vault) {
+    frame.addEventListener('mousemove', (e) => {
+      const rect = frame.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      // Calculate normalized offsets (-1 to 1)
+      const normX = x / (rect.width / 2);
+      const normY = y / (rect.height / 2);
+
+      // Dynamically shift the dual rim lighting based on cursor angle
+      const lavenderX = -8 - normX * 6;
+      const sunsetX = 8 - normX * 6;
+      const glowSpread = 22 + Math.abs(normY) * 6;
+
+      vault.style.boxShadow = `
+        ${lavenderX}px ${normY * 4}px ${glowSpread}px -2px rgba(167, 139, 250, 0.6),
+        ${sunsetX}px ${-normY * 4}px ${glowSpread}px -2px rgba(251, 146, 60, 0.75)
+      `;
+
+      // Subtle 3D perspective shift on the frame
+      frame.style.transform = `perspective(800px) rotateY(${normX * 4}deg) rotateX(${-normY * 4}deg)`;
+    });
+
+    frame.addEventListener('mouseleave', () => {
+      vault.style.boxShadow = `
+        -8px 0 24px -2px rgba(167, 139, 250, 0.45),
+         8px 0 24px -2px rgba(251, 146, 60, 0.65)
+      `;
+      frame.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)';
+    });
+  }
+
+  // Re-trigger name drawing & underline rule animation on hover
+  const nameTrigger = document.getElementById('hero-name-trigger');
+  const nameSvgSpan = document.getElementById('name-svg-span');
+  const heroRuleLine = document.getElementById('hero-rule-line');
+
+  if (nameTrigger && nameSvgSpan && heroRuleLine) {
+    nameTrigger.addEventListener('mouseenter', () => {
+      // Temporarily remove animation classes
+      nameSvgSpan.style.animation = 'none';
+      heroRuleLine.style.animation = 'none';
+
+      // Force DOM reflow
+      void nameSvgSpan.offsetHeight;
+      void heroRuleLine.offsetHeight;
+
+      // Re-apply animations
+      nameSvgSpan.style.animation = 'drawAndFill 1.6s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+      heroRuleLine.style.animation = 'drawRule 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards';
+    });
+  }
+</script>

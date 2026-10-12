@@ -1,0 +1,1023 @@
+---
+import Icons from './Icons.astro';
+---
+
+<section id="munio-demo" class="relative py-12 lg:py-16 max-w-6xl mx-auto px-6 border-t border-white/5">
+  <div class="editorial-panel p-6 sm:p-10 rounded-sm border border-white/10 relative overflow-hidden">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 pb-5 border-b border-white/10">
+      <div>
+        <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold block mb-1">
+          Venture Spotlight &bull; Co-Founder &amp; CXO
+        </span>
+        <h2 class="font-display text-2xl sm:text-4xl text-[#ede8e1] tracking-tight font-normal">
+          Munio: Digital ID Reader for Law Enforcement
+        </h2>
+      </div>
+      <a 
+        href="https://MunioID.com" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 font-sans text-xs uppercase tracking-wider text-[#d4ded7]/80 hover:text-white transition-colors"
+      >
+        <span>MunioID.com</span>
+        <Icons name="external" class="w-3.5 h-3.5 text-[#618c77]" />
+      </a>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mt-6">
+      <!-- Story, CAD Flow & LEO Accountability (Condensed for 1-screen fit) -->
+      <div class="lg:col-span-6 space-y-4 text-left">
+        <p class="font-editorial text-base sm:text-lg text-[#d4ded7] leading-relaxed">
+          Munio enables patrol officers to cryptographically verify mobile driver's licenses (mDLs) from Apple, Google, and Samsung Wallet in under 1.5 seconds. Tested across 5 public safety agencies, Munio was the first mDL reader deployed by an active agency in Georgia.
+        </p>
+
+        <div class="space-y-3 pt-1">
+          <!-- Pillar 1: Officer Safety -->
+          <div class="p-3.5 rounded-sm bg-white/[0.02] border border-white/10 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#618c77]"></span>
+              <h4 class="font-sans text-xs uppercase tracking-wider text-white font-semibold">Officer Safety &amp; Velocity</h4>
+            </div>
+            <p class="font-editorial text-sm text-[#d4ded7]/75 leading-relaxed">
+              Zero contact required. Officers verify state credentials instantly without taking citizen phones or losing situational awareness.
+            </p>
+          </div>
+
+          <!-- Pillar 2: CAD Integration via Munio Bridge -->
+          <div class="p-3.5 rounded-sm bg-white/[0.02] border border-white/10 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <h4 class="font-sans text-xs uppercase tracking-wider text-white font-semibold">CAD Integration via Munio Bridge</h4>
+            </div>
+            <p class="font-editorial text-sm text-[#d4ded7]/75 leading-relaxed">
+              Tapping <em>Send to Bridge</em> transmits verified data to the patrol vehicle MDT. Munio Bridge uses keyboard autofill to type records directly into existing CAD/RMS systems.
+            </p>
+          </div>
+
+          <!-- Pillar 3: Cryptographic Accountability -->
+          <div class="p-3.5 rounded-sm bg-white/[0.02] border border-white/10 space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <h4 class="font-sans text-xs uppercase tracking-wider text-white font-semibold">Cryptographic Accountability</h4>
+            </div>
+            <p class="font-editorial text-sm text-[#d4ded7]/75 leading-relaxed">
+              Verifies DMV signatures against official AAMVA trust lists. Generates tamper-proof audit trails for court evidence with zero stored citizen PII.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-1 flex flex-wrap gap-1.5">
+          <span class="px-2 py-0.5 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/70">SwiftUI &amp; CoreNFC</span>
+          <span class="px-2 py-0.5 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/70">ISO/IEC 18013-5 mDL</span>
+          <span class="px-2 py-0.5 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/70">Munio Bridge CAD</span>
+          <span class="px-2 py-0.5 rounded border border-white/10 font-sans text-[11px] text-[#d4ded7]/70">5 Agency Pilots</span>
+        </div>
+      </div>
+
+      <!-- Right: Interactive Patrol Reader Simulator matching Munio-home & Munio-results -->
+      <div class="lg:col-span-6 flex justify-center">
+        <div class="w-full max-w-[325px] sm:max-w-[340px] rounded-[42px] p-3 bg-[#0b0e12] border-2 border-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] relative select-none">
+          <!-- Screen Frame Container (Light UI with Top Ambient Glow matching screenshot) -->
+          <div class="relative rounded-[34px] bg-[#f0f2f5] border border-black/10 min-h-[580px] flex flex-col justify-between overflow-hidden p-4 shadow-inner munio-font-scope">
+            
+            <!-- Dynamic Ambient Glow at top of screen (Blue idle/scanning -> Green when verified) -->
+            <div 
+              id="phone-ambient-glow" 
+              class="pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 w-72 h-44 bg-[#6ba3ff]/35 rounded-full blur-2xl z-0 transition-all duration-700 ease-out"
+            ></div>
+
+            <!-- Phone Top Status Bar (Inside Screen: solid black icons as on iOS light mode) -->
+            <div class="relative z-20 flex justify-between items-center px-2 pt-0.5 pb-2 text-[13px] text-black font-sans font-bold">
+              <span class="tracking-tight text-black font-extrabold">9:41</span>
+              <div class="w-20 h-4 bg-black rounded-full mx-auto"></div>
+              <div class="flex items-center gap-1.5 text-black font-extrabold">
+                <svg class="w-4 h-3 text-black fill-current" viewBox="0 0 17 11">
+                  <path d="M1 9.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1zm4-3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-4zm4-3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-7zm4-3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-10z"/>
+                </svg>
+                <!-- Battery Icon -->
+                <div class="w-5 h-2.5 rounded-[3px] border-[1.5px] border-black relative p-[1px] flex items-center">
+                  <div class="w-full h-full bg-black rounded-2xs"></div>
+                  <div class="absolute -right-[3px] top-1/2 -translate-y-1/2 w-[1.5px] h-1.5 bg-black rounded-r-xs"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIEW 1: HOME SCREEN (Munio-home.jpg) -->
+            <div id="sim-home-view" class="relative z-10 flex flex-col justify-between h-full min-h-[500px]">
+              <!-- Top Greeting -->
+              <div class="pt-2">
+                <span class="text-xs text-gray-500 font-medium block">Welcome,</span>
+                <h3 class="text-3xl font-bold text-gray-900 leading-tight tracking-tight">
+                  Sherlock<br />Holmes
+                </h3>
+              </div>
+
+              <!-- Bottom Action Panel (Matches Munio-home.jpg) -->
+              <div class="space-y-3 mt-auto pb-1 relative">
+                <!-- Scan Type Card -->
+                <div class="rounded-2xl bg-white shadow-xs p-3.5 border border-gray-100 space-y-2">
+                  <label class="text-[10px] font-semibold text-gray-500 uppercase tracking-wider block">
+                    Scan Type
+                  </label>
+                  <div class="rounded-xl border border-gray-200/90 p-2.5 bg-white flex items-center justify-between text-xs font-semibold text-gray-900 shadow-2xs">
+                    <span>Law Enforcement</span>
+                    <!-- Info Icon with clearly defined dot and stem (tapping triggers modal) -->
+                    <button 
+                      id="btn-scan-type-info"
+                      type="button"
+                      class="text-gray-500 hover:text-blue-600 transition-colors p-0.5 cursor-pointer rounded-full"
+                      title="View scan details"
+                    >
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/>
+                        <line x1="12" y1="11" x2="12" y2="16"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- QR Code Button (Outlined Blue, NO background) -->
+                <button 
+                  id="btn-scan-qr"
+                  type="button"
+                  class="w-full py-3 px-4 rounded-xl border-2 border-[#0052cc] bg-transparent text-[#0052cc] hover:bg-blue-50/50 font-bold text-xs tracking-wider flex items-center justify-center gap-2 shadow-2xs transition-colors cursor-pointer"
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="7" height="7" x="3" y="3"/>
+                    <rect width="7" height="7" x="14" y="3"/>
+                    <rect width="7" height="7" x="14" y="14"/>
+                    <rect width="7" height="7" x="3" y="14"/>
+                  </svg>
+                  <span>QR Code</span>
+                </button>
+
+                <!-- NFC Tap Button with Signature Green Bouncing "Try Me" Hint -->
+                <div class="relative">
+                  <!-- Signature Green Bouncing "Try Me" Indicator -->
+                  <div 
+                    id="sim-try-hint" 
+                    class="absolute -top-3.5 right-4 z-30 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#618c77] text-white font-sans text-[11px] font-bold shadow-lg shadow-[#618c77]/40 animate-bounce cursor-pointer pointer-events-auto"
+                    title="Tap NFC to test ID verification"
+                  >
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                    <span>Try Me</span>
+                  </div>
+
+                  <button 
+                    id="btn-scan-nfc"
+                    type="button"
+                    class="w-full py-3.5 px-4 rounded-xl bg-[#0052cc] hover:bg-[#0042a6] text-white font-bold text-xs tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                  >
+                    <div class="w-4 h-4 rounded-full border border-white/80 flex items-center justify-center text-[10px]">
+                      <Icons name="nfc" class="w-3 h-3 text-white" />
+                    </div>
+                    <span>NFC Tap</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Full Screen Scan Type Info Modal Dialog (Covering entire phone screen) -->
+            <div 
+              id="modal-scan-info" 
+              class="hidden absolute inset-0 z-40 bg-black/60 rounded-[34px] backdrop-blur-sm flex items-center justify-center p-6 transition-opacity"
+            >
+              <div class="bg-white rounded-2xl p-5 shadow-2xl border border-gray-100 max-w-[260px] text-center space-y-3">
+                <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 mx-auto flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/>
+                    <line x1="12" y1="11" x2="12" y2="16"/>
+                  </svg>
+                </div>
+                <h4 class="text-sm font-bold text-gray-900">Law Enforcement Request</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                  This will request all ID elements.
+                </p>
+                <button 
+                  id="btn-close-info"
+                  type="button"
+                  class="w-full py-2 bg-[#0052cc] text-white rounded-xl text-xs font-semibold hover:bg-[#0042a6] transition-colors cursor-pointer"
+                >
+                  Got it
+                </button>
+              </div>
+            </div>
+
+            <!-- EASTER EGG VIEW: Phone Home Screen (Springboard Launcher with Cream Wallpaper + Site Green Blurs) -->
+            <div id="sim-springboard-view" class="absolute inset-0 z-30 hidden flex-col justify-between h-full min-h-[500px] pt-12 pb-5 px-3 bg-[#f5f2eb] overflow-hidden rounded-[34px]">
+              <!-- Cream Wallpaper with Signature Green Ambient Blurs -->
+              <div class="pointer-events-none absolute -top-10 -right-10 w-52 h-52 bg-[#618c77]/30 rounded-full blur-3xl z-0"></div>
+              <div class="pointer-events-none absolute top-1/3 -left-12 w-48 h-48 bg-[#618c77]/20 rounded-full blur-2xl z-0"></div>
+              <div class="pointer-events-none absolute -bottom-10 right-1/4 w-44 h-44 bg-[#618c77]/25 rounded-full blur-3xl z-0"></div>
+
+              <div class="relative z-10">
+                <!-- App Grid -->
+                <div class="grid grid-cols-4 gap-3 pt-4 text-center">
+                  <!-- Munio App Icon (Opens Simulator Home) -->
+                  <button 
+                    id="app-icon-munio"
+                    type="button"
+                    class="flex flex-col items-center gap-1.5 cursor-pointer group"
+                    title="Open Munio mDL Reader"
+                  >
+                    <div class="w-14 h-14 rounded-2xl overflow-hidden shadow-md group-hover:scale-105 group-active:scale-95 transition-transform bg-[#0b0e12] border border-white/20 p-1 flex items-center justify-center">
+                      <img 
+                        src="/assets/images/munio-app-icon.webp" 
+                        alt="Munio" 
+                        class="w-full h-full object-cover rounded-xl"
+                      />
+                    </div>
+                    <span class="text-[11px] font-sans font-semibold text-gray-800 tracking-tight">Munio</span>
+                  </button>
+
+                  <!-- LinkedIn App Icon -->
+                  <a 
+                    href="https://www.linkedin.com/in/gabe-mcguire" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="flex flex-col items-center gap-1.5 cursor-pointer group"
+                    title="Open Gabe's LinkedIn"
+                  >
+                    <div class="w-14 h-14 rounded-2xl bg-[#0a66c2] text-white flex items-center justify-center shadow-md group-hover:scale-105 group-active:scale-95 transition-transform">
+                      <Icons name="linkedin" class="w-7 h-7" />
+                    </div>
+                    <span class="text-[11px] font-sans font-medium text-gray-800 tracking-tight">LinkedIn</span>
+                  </a>
+
+                  <!-- GitHub App Icon -->
+                  <a 
+                    href="https://github.com/ghmcguire" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="flex flex-col items-center gap-1.5 cursor-pointer group"
+                    title="Open Gabe's GitHub"
+                  >
+                    <div class="w-14 h-14 rounded-2xl bg-[#1f2328] text-white flex items-center justify-center shadow-md group-hover:scale-105 group-active:scale-95 transition-transform">
+                      <Icons name="github" class="w-7 h-7" />
+                    </div>
+                    <span class="text-[11px] font-sans font-medium text-gray-800 tracking-tight">GitHub</span>
+                  </a>
+
+                  <!-- Email App Icon -->
+                  <a 
+                    href="mailto:hello@gabemcg.dev" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="flex flex-col items-center gap-1.5 cursor-pointer group"
+                    title="Send Email to Gabe"
+                  >
+                    <div class="w-14 h-14 rounded-2xl bg-[#ea4335] text-white flex items-center justify-center shadow-md group-hover:scale-105 group-active:scale-95 transition-transform">
+                      <Icons name="mail" class="w-7 h-7" />
+                    </div>
+                    <span class="text-[11px] font-sans font-medium text-gray-800 tracking-tight">Mail</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- iOS Dock at Bottom of Home Screen -->
+              <div class="p-2.5 rounded-3xl bg-white/60 backdrop-blur-md border border-white/40 shadow-xs flex justify-around items-center">
+                <button 
+                  id="dock-icon-munio"
+                  type="button"
+                  class="w-12 h-12 rounded-xl overflow-hidden shadow-xs hover:scale-105 active:scale-95 transition-transform bg-[#0b0e12] p-0.5"
+                  title="Open Munio"
+                >
+                  <img src="/assets/images/munio-app-icon.webp" alt="Munio" class="w-full h-full object-cover rounded-lg" />
+                </button>
+                <a 
+                  href="https://www.linkedin.com/in/gabe-mcguire" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="w-12 h-12 rounded-xl bg-[#0a66c2] text-white flex items-center justify-center shadow-xs hover:scale-105 active:scale-95 transition-transform"
+                >
+                  <Icons name="linkedin" class="w-6 h-6" />
+                </a>
+                <a 
+                  href="https://github.com/ghmcguire" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="w-12 h-12 rounded-xl bg-[#1f2328] text-white flex items-center justify-center shadow-xs hover:scale-105 active:scale-95 transition-transform"
+                >
+                  <Icons name="github" class="w-6 h-6" />
+                </a>
+                <a 
+                  href="mailto:hello@gabemcg.dev" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="w-12 h-12 rounded-xl bg-[#ea4335] text-white flex items-center justify-center shadow-xs hover:scale-105 active:scale-95 transition-transform"
+                >
+                  <Icons name="mail" class="w-6 h-6" />
+                </a>
+              </div>
+            </div>
+
+            <!-- VIEW 2: SKELETON LOADER SCREEN -->
+            <div id="sim-skeleton-view" class="relative z-10 hidden flex-col justify-between h-full min-h-[520px] py-1">
+              <!-- Header Telemetry while waiting -->
+              <div class="flex items-center justify-between pb-2 text-[10px] text-gray-500">
+                <span class="flex items-center gap-1.5 font-semibold text-blue-600">
+                  <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
+                  <span>Awaiting ID Data...</span>
+                </span>
+                <span class="font-mono text-gray-400">ISO 18013-5</span>
+              </div>
+
+              <!-- Skeleton Results Card -->
+              <div class="rounded-2xl bg-white shadow-lg p-3.5 border border-gray-100 relative overflow-hidden space-y-3.5">
+                <!-- Top Row: Photo box + Name lines -->
+                <div class="flex items-start gap-3.5">
+                  <div class="w-24 h-32 rounded-2xl bg-gray-200/90 relative overflow-hidden skeleton-shimmer flex-shrink-0"></div>
+                  <div class="flex-1 space-y-2 pt-1">
+                    <div class="h-4.5 w-24 bg-gray-200/90 rounded-md relative overflow-hidden skeleton-shimmer"></div>
+                    <div class="h-4.5 w-28 bg-gray-200/90 rounded-md relative overflow-hidden skeleton-shimmer"></div>
+                    <div class="h-4.5 w-20 bg-gray-200/90 rounded-md relative overflow-hidden skeleton-shimmer"></div>
+                    <div class="h-3 w-20 bg-gray-200/70 rounded-md mt-2 relative overflow-hidden skeleton-shimmer"></div>
+                  </div>
+                </div>
+
+                <!-- Field Rows Skeleton -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="space-y-1">
+                    <div class="h-2 w-8 bg-blue-100 rounded relative overflow-hidden skeleton-shimmer"></div>
+                    <div class="h-3.5 w-20 bg-gray-200/90 rounded relative overflow-hidden skeleton-shimmer"></div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <div class="space-y-1">
+                      <div class="h-2 w-7 bg-blue-100 rounded relative overflow-hidden skeleton-shimmer"></div>
+                      <div class="h-3.5 w-20 bg-gray-200/90 rounded relative overflow-hidden skeleton-shimmer"></div>
+                    </div>
+                    <div class="space-y-1">
+                      <div class="h-2 w-7 bg-blue-100 rounded relative overflow-hidden skeleton-shimmer"></div>
+                      <div class="h-3.5 w-20 bg-gray-200/90 rounded relative overflow-hidden skeleton-shimmer"></div>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <div class="space-y-1">
+                      <div class="h-2 w-10 bg-blue-100 rounded relative overflow-hidden skeleton-shimmer"></div>
+                      <div class="h-3.5 w-8 bg-gray-200/90 rounded relative overflow-hidden skeleton-shimmer"></div>
+                    </div>
+                    <div class="space-y-1">
+                      <div class="h-2 w-16 bg-blue-100 rounded relative overflow-hidden skeleton-shimmer"></div>
+                      <div class="h-3.5 w-8 bg-gray-200/90 rounded relative overflow-hidden skeleton-shimmer"></div>
+                    </div>
+                  </div>
+                  <div class="space-y-1">
+                    <div class="h-2 w-12 bg-blue-100 rounded relative overflow-hidden skeleton-shimmer"></div>
+                    <div class="h-3.5 w-32 bg-gray-200/90 rounded relative overflow-hidden skeleton-shimmer"></div>
+                  </div>
+                </div>
+
+                <!-- Issuer Badge Skeleton -->
+                <div class="rounded-xl border border-gray-200 p-2 bg-gray-50/50 flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full bg-gray-200/90 relative overflow-hidden skeleton-shimmer"></div>
+                  <div class="space-y-1 flex-1">
+                    <div class="h-2 w-14 bg-gray-200 rounded relative overflow-hidden skeleton-shimmer"></div>
+                    <div class="h-2.5 w-24 bg-emerald-100 rounded relative overflow-hidden skeleton-shimmer"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Handshake Note -->
+              <p class="text-center text-xs text-gray-500 py-1">
+                Citizen authorizing biometric release on device...
+              </p>
+            </div>
+
+            <!-- VIEW 3: RESULTS SCREEN (Munio-results.jpg) -->
+            <div id="sim-results-view" class="relative z-10 hidden flex-col justify-between h-full min-h-[520px] py-1">
+              
+              <!-- White Results Card (Animates upward when sliding) -->
+              <div id="results-id-card" class="rounded-2xl bg-white shadow-xl p-3.5 border border-gray-100 relative text-left transition-transform duration-75 will-change-transform">
+                <!-- Top Section: Photo + Name -->
+                <div class="flex items-start gap-3.5">
+                  <!-- Photo: User's headshot from header -->
+                  <div class="w-24 sm:w-26 h-32 sm:h-34 rounded-2xl overflow-hidden bg-slate-800 flex-shrink-0 border border-gray-200 shadow-xs relative flex items-center justify-center">
+                    <img 
+                      src="/assets/images/headshot.webp" 
+                      alt="Gabriel Hill McGuire" 
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <!-- Name and ID: Gabriel Hill McGuire -->
+                  <div class="flex-1 pt-0.5">
+                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 leading-[1.15]">
+                      Gabriel<br />
+                      Hill<br />
+                      McGuire
+                    </h4>
+                    <span class="text-xs font-semibold text-gray-400 tracking-wider block mt-2 font-mono">
+                      ID #99999999
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Field Grid (DOB: 01/01/2002, ISS: 01/01/2023, EXP: 01/01/2031) -->
+                <div class="mt-3 space-y-2 text-xs">
+                  <!-- DOB -->
+                  <div>
+                    <span class="text-[10px] font-bold text-[#0052cc] tracking-wider block uppercase">DOB</span>
+                    <span class="text-sm font-bold text-gray-900">01/01/2002</span>
+                  </div>
+
+                  <!-- ISS & EXP -->
+                  <div class="grid grid-cols-2 gap-2">
+                    <div>
+                      <span class="text-[10px] font-bold text-[#0052cc] tracking-wider block uppercase">ISS</span>
+                      <span class="text-sm font-bold text-gray-900">01/01/2023</span>
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-bold text-[#0052cc] tracking-wider block uppercase">EXP</span>
+                      <span class="text-sm font-bold text-gray-900">01/01/2031</span>
+                    </div>
+                  </div>
+
+                  <!-- CLASS & RESTRICTIONS -->
+                  <div class="grid grid-cols-2 gap-2">
+                    <div>
+                      <span class="text-[10px] font-bold text-[#0052cc] tracking-wider block uppercase">CLASS</span>
+                      <span class="text-sm font-bold text-gray-900">C</span>
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-bold text-[#0052cc] tracking-wider block uppercase">RESTRICTIONS</span>
+                      <span class="text-sm font-bold text-gray-900">B</span>
+                    </div>
+                  </div>
+
+                  <!-- ADDRESS -->
+                  <div>
+                    <span class="text-[10px] font-bold text-[#0052cc] tracking-wider block uppercase">ADDRESS</span>
+                    <span class="text-xs font-bold text-gray-900 leading-snug block">
+                      225 North Ave NW<br />
+                      Atlanta, GA 30332
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Trusted Issuer Badge (Georgia Peach) -->
+                <div class="mt-3 rounded-xl border border-gray-200 p-2 bg-white flex items-center gap-2.5">
+                  <div class="w-7 h-7 flex-shrink-0 flex items-center justify-center">
+                    <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                      <defs>
+                        <linearGradient id="peachGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#ff758c"/>
+                          <stop offset="60%" stop-color="#ff7eb3"/>
+                          <stop offset="100%" stop-color="#fda085"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M16 7c2-4 6-4 9-2-1 4-3 6-7 5" fill="#388e3c"/>
+                      <path d="M16 9c-5-2-11 2-11 9 0 7 6 11 11 11s11-4 11-11c0-7-6-11-11-9z" fill="url(#peachGrad)"/>
+                      <path d="M16 11c-1 3-1 8 0 16" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest block font-mono">
+                      GEORGIA
+                    </span>
+                    <span class="text-[10px] font-extrabold text-[#0f853a] uppercase tracking-wider block">
+                      TRUSTED ISSUER
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Action Controls: Slide to Dismiss & Send Data (CAD) -->
+              <div class="flex items-center gap-2 mt-auto pt-2">
+                <!-- Slide to Dismiss Slider Track (with interactive drag & embedded status) -->
+                <div 
+                  id="slide-dismiss-track"
+                  class="flex-1 rounded-xl bg-white border border-gray-200 p-1 flex items-center relative overflow-hidden h-[48px] shadow-2xs select-none touch-none transition-colors duration-200"
+                >
+                  <!-- Draggable Thumb -->
+                  <div 
+                    id="slide-dismiss-thumb"
+                    class="w-9 h-9 bg-[#0052cc] rounded-lg flex items-center justify-center text-white shadow-2xs cursor-grab active:cursor-grabbing flex-shrink-0 z-10 touch-none will-change-transform"
+                  >
+                    <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                  </div>
+
+                  <!-- Default Track Label (iOS 'Slide to Unlock' style animated gray/white gradient shimmer) -->
+                  <span id="slide-track-label" class="flex-1 text-center text-xs font-semibold slide-unlock-shimmer pr-1 pointer-events-none transition-opacity duration-200">
+                    Slide to Dismiss
+                  </span>
+
+                  <!-- Status Banner INSIDE Slider Track when Send to Bridge is tapped -->
+                  <div 
+                    id="cad-track-status" 
+                    class="absolute inset-0 flex items-center justify-center px-3 text-[11px] font-bold text-gray-700 bg-gray-100/90 opacity-0 pointer-events-none transition-opacity duration-200 z-5 text-center leading-tight"
+                  >
+                    Transmitting to Bridge...
+                  </div>
+                </div>
+
+                <!-- Send to Bridge Button (Square blue button) -->
+                <button 
+                  id="btn-send-cad"
+                  type="button"
+                  class="w-[48px] h-[48px] bg-[#0052cc] hover:bg-[#0042a6] rounded-xl flex items-center justify-center text-white shadow-sm flex-shrink-0 transition-all duration-300 cursor-pointer"
+                  title="Send to Bridge"
+                >
+                  <span id="btn-cad-icon">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect width="18" height="12" x="3" y="3" rx="2"/>
+                      <polyline points="9 11 12 8 15 11"/>
+                      <line x1="12" y1="8" x2="12" y2="15"/>
+                      <line x1="8" y1="19" x2="16" y2="19"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Bottom Home Indicator Bar (Easter egg: click to go to phone Home Screen) -->
+          <div class="pt-2 pb-0.5 flex justify-center">
+            <button 
+              id="phone-home-indicator"
+              type="button"
+              class="w-32 h-2.5 -my-1 rounded-full flex items-center justify-center group cursor-pointer focus:outline-none"
+              title="Home (Swipe / Click)"
+            >
+              <div class="w-28 h-1 bg-white/40 group-hover:bg-white/80 transition-colors rounded-full"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Google Sans typography scope for the Munio mobile app */
+  .munio-font-scope {
+    font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Gray gradient sliding skeleton loader animation */
+  .skeleton-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .skeleton-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.75) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: shimmerSlide 1.3s infinite ease-in-out;
+  }
+
+  @keyframes shimmerSlide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Classic iOS 'Slide to Unlock' style animated gradient text */
+  .slide-unlock-shimmer {
+    background: linear-gradient(
+      90deg,
+      #9ca3af 0%,
+      #9ca3af 30%,
+      #ffffff 50%,
+      #9ca3af 70%,
+      #9ca3af 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: slideTextShimmer 2.5s infinite linear;
+    text-shadow: none;
+  }
+
+  @keyframes slideTextShimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+</style>
+
+<script>
+  const btnScanNfc = document.getElementById('btn-scan-nfc');
+  const btnScanQr = document.getElementById('btn-scan-qr');
+  const homeView = document.getElementById('sim-home-view');
+  const skeletonView = document.getElementById('sim-skeleton-view');
+  const resultsView = document.getElementById('sim-results-view');
+  const springboardView = document.getElementById('sim-springboard-view');
+  const resultsCard = document.getElementById('results-id-card');
+  const tryHint = document.getElementById('sim-try-hint');
+
+  // Easter Egg Home Bar & Springboard elements
+  const phoneHomeIndicator = document.getElementById('phone-home-indicator');
+  const appIconMunio = document.getElementById('app-icon-munio');
+  const dockIconMunio = document.getElementById('dock-icon-munio');
+
+  function openSpringboard() {
+    dismissTryHint();
+    modalScanInfo?.classList.add('hidden');
+    homeView?.classList.add('hidden');
+    homeView?.classList.remove('flex');
+    skeletonView?.classList.add('hidden');
+    skeletonView?.classList.remove('flex');
+    resultsView?.classList.add('hidden');
+    resultsView?.classList.remove('flex');
+
+    springboardView?.classList.remove('hidden');
+    springboardView?.classList.add('flex');
+  }
+
+  function launchMunioApp() {
+    springboardView?.classList.add('hidden');
+    springboardView?.classList.remove('flex');
+    resetToHome();
+  }
+
+  phoneHomeIndicator?.addEventListener('click', () => {
+    // If already on springboard, reopen Munio app
+    if (springboardView && !springboardView.classList.contains('hidden')) {
+      launchMunioApp();
+    } else {
+      openSpringboard();
+    }
+  });
+
+  appIconMunio?.addEventListener('click', launchMunioApp);
+  dockIconMunio?.addEventListener('click', launchMunioApp);
+
+  // Scan Info Modal
+  const btnScanInfo = document.getElementById('btn-scan-type-info');
+  const modalScanInfo = document.getElementById('modal-scan-info');
+  const btnCloseInfo = document.getElementById('btn-close-info');
+
+  btnScanInfo?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    modalScanInfo?.classList.remove('hidden');
+    dismissTryHint();
+  });
+
+  btnCloseInfo?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    modalScanInfo?.classList.add('hidden');
+  });
+
+  modalScanInfo?.addEventListener('click', (e) => {
+    if (e.target === modalScanInfo) {
+      modalScanInfo.classList.add('hidden');
+    }
+  });
+
+  function dismissTryHint() {
+    if (tryHint) {
+      tryHint.style.display = 'none';
+    }
+  }
+
+  tryHint?.addEventListener('click', () => {
+    dismissTryHint();
+    triggerVerification();
+  });
+
+  function playNfcChime() {
+    try {
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtx) return;
+      const audioCtx = new AudioCtx();
+      const now = audioCtx.currentTime;
+
+      // Tone 1: 520Hz soft ping
+      const osc1 = audioCtx.createOscillator();
+      const gain1 = audioCtx.createGain();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(520, now);
+      gain1.gain.setValueAtTime(0.04, now);
+      gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+      osc1.connect(gain1);
+      gain1.connect(audioCtx.destination);
+      osc1.start(now);
+      osc1.stop(now + 0.1);
+
+      // Tone 2: 880Hz confirmation
+      const osc2 = audioCtx.createOscillator();
+      const gain2 = audioCtx.createGain();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(880, now + 0.1);
+      gain2.gain.setValueAtTime(0.05, now + 0.1);
+      gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+      osc2.connect(gain2);
+      gain2.connect(audioCtx.destination);
+      osc2.start(now + 0.1);
+      osc2.stop(now + 0.3);
+    } catch (e) {
+      // Audio autoplay policy fallback
+    }
+  }
+
+  const ambientGlow = document.getElementById('phone-ambient-glow');
+
+  function setAmbientGlow(color: 'blue' | 'green') {
+    if (!ambientGlow) return;
+    if (color === 'green') {
+      ambientGlow.classList.remove('bg-[#6ba3ff]/35');
+      ambientGlow.classList.add('bg-[#618c77]/45');
+    } else {
+      ambientGlow.classList.remove('bg-[#618c77]/45');
+      ambientGlow.classList.add('bg-[#6ba3ff]/35');
+    }
+  }
+
+  function resetToHome() {
+    setAmbientGlow('blue');
+    springboardView?.classList.add('hidden');
+    springboardView?.classList.remove('flex');
+    resultsView?.classList.add('hidden');
+    resultsView?.classList.remove('flex');
+    skeletonView?.classList.add('hidden');
+    skeletonView?.classList.remove('flex');
+    homeView?.classList.remove('hidden');
+    homeView?.classList.add('flex');
+
+    if (resultsCard) {
+      resultsCard.style.transition = 'none';
+      resultsCard.style.transform = 'translateY(0)';
+      resultsCard.style.opacity = '1';
+    }
+
+    if (slideThumb) {
+      slideThumb.style.transition = 'none';
+      slideThumb.style.transform = 'translateX(0)';
+    }
+
+    if (slideTrackLabel) {
+      slideTrackLabel.style.opacity = '1';
+      slideTrackLabel.classList.remove('opacity-0');
+    }
+
+    unfreezeSlider();
+  }
+
+  function triggerVerification() {
+    dismissTryHint();
+    playNfcChime();
+    setAmbientGlow('blue');
+
+    // Reset slide track label opacity for when results load
+    if (slideTrackLabel) {
+      slideTrackLabel.style.opacity = '1';
+      slideTrackLabel.classList.remove('opacity-0');
+    }
+
+    // 1. Hide Home, show Skeleton view
+    homeView?.classList.add('hidden');
+    homeView?.classList.remove('flex');
+    skeletonView?.classList.remove('hidden');
+    skeletonView?.classList.add('flex');
+
+    // Reset results card transform
+    if (resultsCard) {
+      resultsCard.style.transform = 'translateY(0)';
+      resultsCard.style.opacity = '1';
+    }
+
+    // 2. Wait 1.3s (simulating citizen release)
+    setTimeout(() => {
+      skeletonView?.classList.add('hidden');
+      skeletonView?.classList.remove('flex');
+      resultsView?.classList.remove('hidden');
+      resultsView?.classList.add('flex');
+      // Turn ambient blur green upon successful ID verification
+      setAmbientGlow('green');
+      // Ensure label is visible
+      if (slideTrackLabel) {
+        slideTrackLabel.style.opacity = '1';
+        slideTrackLabel.classList.remove('opacity-0');
+      }
+      // Request animation frame to ensure layout is measured
+      requestAnimationFrame(() => {
+        setupSlider();
+      });
+    }, 1300);
+  }
+
+  btnScanNfc?.addEventListener('click', triggerVerification);
+  btnScanQr?.addEventListener('click', triggerVerification);
+
+  // Send to Bridge & In-Track Status Handling
+  const btnSendCad = document.getElementById('btn-send-cad');
+  const cadIcon = document.getElementById('btn-cad-icon');
+  const slideTrack = document.getElementById('slide-dismiss-track');
+  const slideTrackLabel = document.getElementById('slide-track-label');
+  const cadTrackStatus = document.getElementById('cad-track-status');
+  const slideThumb = document.getElementById('slide-dismiss-thumb');
+
+  let isSendingToBridge = false;
+
+  function freezeSlider() {
+    isSendingToBridge = true;
+    if (slideTrack) {
+      slideTrack.classList.add('bg-gray-100', 'pointer-events-none');
+      slideTrack.classList.remove('bg-white');
+    }
+    if (slideThumb) {
+      slideThumb.classList.remove('bg-[#0052cc]');
+      slideThumb.classList.add('bg-gray-400');
+    }
+    if (slideTrackLabel) {
+      slideTrackLabel.style.opacity = '0';
+      slideTrackLabel.classList.add('opacity-0');
+    }
+    if (cadTrackStatus) {
+      cadTrackStatus.classList.remove('opacity-0');
+    }
+  }
+
+  function unfreezeSlider() {
+    isSendingToBridge = false;
+    if (slideTrack) {
+      slideTrack.classList.remove('bg-gray-100', 'pointer-events-none');
+      slideTrack.classList.add('bg-white');
+    }
+    if (slideThumb) {
+      slideThumb.classList.remove('bg-gray-400');
+      slideThumb.classList.add('bg-[#0052cc]');
+      slideThumb.style.transform = 'translateX(0)';
+    }
+    if (slideTrackLabel) {
+      slideTrackLabel.style.opacity = '1';
+      slideTrackLabel.classList.remove('opacity-0');
+    }
+    if (cadTrackStatus) {
+      cadTrackStatus.classList.add('opacity-0');
+    }
+  }
+
+  btnSendCad?.addEventListener('click', () => {
+    if (!btnSendCad || !cadIcon || !cadTrackStatus || isSendingToBridge) return;
+    dismissTryHint();
+    freezeSlider();
+
+    // Phase 1: Sending
+    btnSendCad.classList.remove('bg-[#0052cc]');
+    btnSendCad.classList.add('bg-amber-500', 'rounded-full');
+    cadIcon.innerHTML = `
+      <svg class="w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+        <path d="M12 2a10 10 0 0 1 10 10"/>
+      </svg>
+    `;
+    cadTrackStatus.textContent = 'Transmitting to Bridge...';
+
+    // Phase 2: Autofilling CAD
+    setTimeout(() => {
+      if (cadTrackStatus) {
+        cadTrackStatus.textContent = 'Munio Bridge autofilling CAD...';
+      }
+    }, 700);
+
+    // Phase 3: Populated & Verified
+    setTimeout(() => {
+      btnSendCad.classList.remove('bg-amber-500');
+      btnSendCad.classList.add('bg-[#0f853a]');
+      cadIcon.innerHTML = `
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      `;
+      if (cadTrackStatus) {
+        cadTrackStatus.textContent = 'CAD Populated ✓';
+      }
+    }, 1400);
+
+    // Revert after 3.2s
+    setTimeout(() => {
+      btnSendCad.classList.remove('bg-[#0f853a]', 'rounded-full');
+      btnSendCad.classList.add('bg-[#0052cc]', 'rounded-xl');
+      cadIcon.innerHTML = `
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect width="18" height="12" x="3" y="3" rx="2"/>
+          <polyline points="9 11 12 8 15 11"/>
+          <line x1="12" y1="8" x2="12" y2="15"/>
+          <line x1="8" y1="19" x2="16" y2="19"/>
+        </svg>
+      `;
+      unfreezeSlider();
+    }, 3800);
+  });
+
+  // Slide to Dismiss - Interactive Drag Physics with Proportional Card Lift
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslateX = 0;
+  let maxSlide = 0;
+
+  function setupSlider() {
+    if (!slideTrack || !slideThumb) return;
+    const trackWidth = slideTrack.clientWidth;
+    const thumbWidth = slideThumb.clientWidth;
+    maxSlide = trackWidth - thumbWidth - 8; // 8px for padding
+  }
+
+  function onPointerDown(e: PointerEvent) {
+    if (isSendingToBridge || !slideThumb) return;
+    dismissTryHint();
+    isDragging = true;
+    startX = e.clientX;
+    currentTranslateX = 0;
+    slideThumb.setPointerCapture(e.pointerId);
+
+    // Disable transition during direct drag for responsiveness
+    slideThumb.style.transition = 'none';
+    if (resultsCard) {
+      resultsCard.style.transition = 'none';
+    }
+  }
+
+  function onPointerMove(e: PointerEvent) {
+    if (!isDragging || !slideThumb || maxSlide <= 0) return;
+    const deltaX = e.clientX - startX;
+    // Constrain delta to [0, maxSlide]
+    currentTranslateX = Math.max(0, Math.min(deltaX, maxSlide));
+    slideThumb.style.transform = `translateX(${currentTranslateX}px)`;
+
+    // Proportional progress (0 to 1)
+    const progress = currentTranslateX / maxSlide;
+
+    // As slider progresses, slightly lift card upward (up to -24px) and soften opacity
+    if (resultsCard) {
+      const liftY = -28 * progress;
+      resultsCard.style.transform = `translateY(${liftY}px)`;
+    }
+
+    if (slideTrackLabel) {
+      slideTrackLabel.style.opacity = `${Math.max(0, 1 - progress * 1.5)}`;
+    }
+  }
+
+  function onPointerUp(e: PointerEvent) {
+    if (!isDragging || !slideThumb) return;
+    isDragging = false;
+    slideThumb.releasePointerCapture(e.pointerId);
+
+    const progress = maxSlide > 0 ? currentTranslateX / maxSlide : 0;
+
+    if (progress > 0.65) {
+      // Completed slide! Complete thumb travel and slide card completely up out of screen
+      slideThumb.style.transition = 'transform 0.15s ease-out';
+      slideThumb.style.transform = `translateX(${maxSlide}px)`;
+
+      if (resultsCard) {
+        resultsCard.style.transition = 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease-in';
+        resultsCard.style.transform = 'translateY(-120%)';
+        resultsCard.style.opacity = '0';
+      }
+
+      setTimeout(() => {
+        resetToHome();
+      }, 350);
+    } else {
+      // Released prematurely: Elastic bounce back to start
+      slideThumb.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+      slideThumb.style.transform = 'translateX(0)';
+
+      if (resultsCard) {
+        resultsCard.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        resultsCard.style.transform = 'translateY(0)';
+      }
+
+      if (slideTrackLabel) {
+        slideTrackLabel.style.opacity = '1';
+      }
+    }
+  }
+
+  slideThumb?.addEventListener('pointerdown', onPointerDown);
+  slideThumb?.addEventListener('pointermove', onPointerMove);
+  slideThumb?.addEventListener('pointerup', onPointerUp);
+  slideThumb?.addEventListener('pointercancel', onPointerUp);
+
+  // Resize listener to calibrate maxSlide
+  window.addEventListener('resize', setupSlider);
+</script>

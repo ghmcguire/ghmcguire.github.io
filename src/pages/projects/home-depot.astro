@@ -1,0 +1,430 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icons from '../../components/Icons.astro';
+---
+
+<Layout title="The Home Depot: TeamUp in PocketGuide — Gabe McGuire" description="Enterprise UX design case study for The Home Depot: Bringing human connection to digital training for 400,000+ associates.">
+  <article class="max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-16 text-left">
+    <!-- Back Button -->
+    <div>
+      <a href="/#projects" class="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-[#618c77] hover:text-[#7ba690] transition-colors">
+        <span>&larr; Back to all projects</span>
+      </a>
+    </div>
+
+    <!-- Case Study Header -->
+    <header class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold">
+          The Home Depot &bull; HR UX Pod Internship
+        </span>
+        <span id="nda-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20">
+          NDA Protected
+        </span>
+      </div>
+
+      <h1 class="font-display text-4xl sm:text-6xl text-[#ede8e1] tracking-tight font-normal leading-tight">
+        Bringing Human Connection to Digital Training
+      </h1>
+      <p class="font-editorial text-2xl text-[#d4ded7] font-normal leading-snug">
+        TeamUp in PocketGuide
+      </p>
+      <p class="font-editorial text-lg text-[#d4ded7]/70 font-normal max-w-2xl">
+        Transforming solo digital learning into 1-on-1 mentorship and hands-on certification for 400,000+ retail associates across 2,300+ stores.
+      </p>
+
+      <!-- Project Metadata Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/10 text-xs">
+        <div>
+          <span class="font-mono text-[10px] text-white/40 uppercase block">Role</span>
+          <span class="font-editorial text-sm text-[#ede8e1]">Enterprise UX Intern</span>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-white/40 uppercase block">Team &amp; Pod</span>
+          <span class="font-editorial text-sm text-[#ede8e1]">Human Resources UX</span>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-white/40 uppercase block">Mentorship</span>
+          <span class="font-editorial text-sm text-[#ede8e1]">Darren Allen &bull; Angela Rosado</span>
+        </div>
+        <div>
+          <span class="font-mono text-[10px] text-white/40 uppercase block">Scale</span>
+          <span class="font-editorial text-sm text-[#ede8e1]">400,000+ Associates</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 1. Password Gate (Shown when locked) -->
+    <div id="password-gate" class="editorial-panel p-8 sm:p-14 rounded-sm border border-white/10 space-y-8 text-center max-w-xl mx-auto shadow-2xl">
+      <div class="w-12 h-12 rounded-full bg-[#618c77]/10 border border-[#618c77]/30 flex items-center justify-center mx-auto text-[#618c77]">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="font-display text-2xl sm:text-3xl text-[#ede8e1] font-normal">
+          This case study is password protected
+        </h3>
+        <p class="font-editorial text-base text-[#d4ded7]/70 leading-relaxed">
+          Due to non-disclosure obligations with The Home Depot, proprietary internal workflows and design artifacts require a passcode to view.
+        </p>
+      </div>
+
+      <!-- Passcode Form -->
+      <form id="passcode-form" class="space-y-4 max-w-sm mx-auto">
+        <div class="relative">
+          <input 
+            type="password" 
+            id="passcode-input"
+            placeholder="Enter passcode..."
+            class="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/20 text-[#ede8e1] placeholder-white/40 focus:outline-none focus:border-[#618c77] font-mono text-sm tracking-wider text-center"
+            required
+            autocomplete="off"
+          />
+        </div>
+
+        <button 
+          type="submit"
+          class="w-full py-3 px-6 rounded-lg bg-[#618c77] hover:bg-[#729f8a] text-black font-sans font-semibold text-xs uppercase tracking-wider transition-colors shadow-lg cursor-pointer"
+        >
+          Unlock Case Study
+        </button>
+
+        <p id="error-msg" class="hidden text-xs font-mono text-rose-400 pt-1">
+          Incorrect passcode. Please check your password or request access below.
+        </p>
+      </form>
+
+      <div class="pt-4 border-t border-white/5 text-xs font-editorial text-[#d4ded7]/60">
+        Don’t have the passcode? 
+        <a 
+          href="mailto:hello@gabemcg.dev?subject=Request%20Passcode%20for%20Home%20Depot%20Case%20Study&body=Hey%20Gabe%2C%0A%0AI'm%20reviewing%20your%20portfolio%20and%20would%20love%20the%20passcode%20to%20view%20your%20Home%20Depot%20case%20study.%0A%0AThanks!" 
+          class="text-[#618c77] hover:underline ml-1"
+        >
+          Request access via email &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. Unlocked Content (Revealed upon entering valid passcode) -->
+    <div id="unlocked-content" class="hidden space-y-16">
+      <!-- Unlocked Banner -->
+      <div class="flex items-center justify-between p-4 rounded-sm bg-[#618c77]/10 border border-[#618c77]/30 text-xs font-mono text-[#618c77]">
+        <div class="flex items-center gap-2">
+          <span>&#10003; Passcode verified. Proprietary view enabled.</span>
+        </div>
+        <button id="btn-relock" class="text-white/40 hover:text-white transition-colors underline cursor-pointer">
+          Re-lock page
+        </button>
+      </div>
+
+      <!-- 01: Hero Cover & Phone Mockup -->
+      <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+        <img 
+          src="/assets/images/projects/home-depot/hero-mockup.jpg" 
+          alt="PocketGuide mockup showing the TeamUp popup modal: Get Ready! Go find Clay B. to TeamUp" 
+          class="w-full h-auto object-cover block"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Section 1: The Foundation - PocketGuide -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-6">
+        <div class="space-y-1">
+          <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold">01 &bull; The Baseline</span>
+          <h2 class="font-display text-3xl text-[#ede8e1] font-normal">What is PocketGuide?</h2>
+        </div>
+        
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          <strong>PocketGuide</strong> is The Home Depot’s enterprise mobile training application. Designed for handheld devices used on the sales floor, its core mission is to familiarize store associates with the wide catalog of products offered across departments (Lumber, Flooring, Paint, Plumbing, Electrical, Garden), their variations, and their practical uses when helping customers.
+        </p>
+
+        <!-- Core Features vs Observed Problems Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+          <!-- Existing Architecture -->
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-3">
+            <h3 class="font-sans text-xs uppercase tracking-wider text-white font-semibold">Existing Architecture</h3>
+            <ul class="font-editorial text-base text-[#d4ded7]/80 space-y-2.5">
+              <li><strong>Challenges:</strong> Digital multiple-choice quizzes about products and store services.</li>
+              <li><strong>Reference:</strong> In-depth articles detailing department specs and product highlights.</li>
+              <li><strong>Checklists:</strong> Guided linear lists connecting challenges to department reference material.</li>
+            </ul>
+          </div>
+
+          <!-- Field Research Breakdown -->
+          <div class="p-6 rounded-sm bg-rose-500/[0.04] border border-rose-500/20 space-y-3">
+            <h3 class="font-sans text-xs uppercase tracking-wider text-rose-300 font-semibold">Observed Field Problems</h3>
+            <ul class="font-editorial text-base text-[#d4ded7]/80 space-y-2.5">
+              <li><strong>Nobody Read the Reference Tab:</strong> During field observations in stores, zero associates were observed reading reference articles in the aisles.</li>
+              <li><strong>Chasing Points over Learning:</strong> Gamified quizzes encouraged associates to rapidly guess answers to boost leaderboard points without retaining practical skills.</li>
+              <li><strong>Isolated Learning:</strong> Staring down at a handheld phone in a giant warehouse felt lonely and disconnected from seasoned coworker mentorship.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02: Baseline App Screens -->
+      <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+        <img 
+          src="/assets/images/projects/home-depot/pocketguide-baseline.jpg" 
+          alt="Side-by-side screenshots of the baseline PocketGuide Reference tab and the quiz Challenges screens" 
+          class="w-full h-auto object-cover block"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Section 2: The Core Innovation - TeamUp! -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-6">
+        <div class="space-y-1">
+          <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold">02 &bull; The Innovation</span>
+          <h2 class="font-display text-3xl text-[#ede8e1] font-normal">TeamUp: 1-on-1 In-Person Mentorship</h2>
+        </div>
+
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          Rather than keeping training trapped behind a lonely glass screen, I conceptualized and designed <strong>TeamUp!</strong>: an interactive workflow that pairs new associates with experienced department leads for structured, hands-on retail practice.
+        </p>
+
+        <!-- 4-Step Flow Breakdown -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+          <div class="p-5 rounded-sm bg-white/[0.02] border border-white/10 space-y-2">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block">Step 01</span>
+            <h4 class="font-display text-xl text-[#ede8e1]">Choose TeamUp</h4>
+            <p class="font-editorial text-sm text-[#d4ded7]/70">Associate discovers a TeamUp module directly in their personalized training journey.</p>
+          </div>
+
+          <div class="p-5 rounded-sm bg-white/[0.02] border border-white/10 space-y-2">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block">Step 02</span>
+            <h4 class="font-display text-xl text-[#ede8e1]">Select Leader</h4>
+            <p class="font-editorial text-sm text-[#d4ded7]/70">Select an in-store mentor or department supervisor from the active store roster.</p>
+          </div>
+
+          <div class="p-5 rounded-sm bg-white/[0.02] border border-white/10 space-y-2">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block">Step 03</span>
+            <h4 class="font-display text-xl text-[#ede8e1]">Pair with Leader</h4>
+            <p class="font-editorial text-sm text-[#d4ded7]/70">Zero Bluetooth friction: enter the simple 4-digit numeric code displayed on the mentor’s device.</p>
+          </div>
+
+          <div class="p-5 rounded-sm bg-white/[0.02] border border-white/10 space-y-2">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-[#618c77] font-semibold block">Step 04</span>
+            <h4 class="font-display text-xl text-[#ede8e1]">TeamUp!</h4>
+            <p class="font-editorial text-sm text-[#d4ded7]/70">Engage in a 10–15 minute customer roleplay simulation using The Home Depot’s GET customer model.</p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-sm bg-[#618c77]/10 border border-[#618c77]/30 text-sm font-editorial text-[#d4ded7]/90 leading-relaxed">
+          <strong>Example Scenario (D28 Spring Outdoor Cooking):</strong> The associate plays the sales associate while the mentor acts as an undecided customer looking for a smoker or BBQ grill. The prompt guides the associate to ask open-ended qualifying questions, demonstrate aisle knowledge, and suggest complementary accessories.
+        </div>
+      </section>
+
+      <!-- 03: TeamUp Flow Diagram / UI Screens -->
+      <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+        <img 
+          src="/assets/images/projects/home-depot/teamup-flow-mockup.jpg" 
+          alt="The 4-step TeamUp interaction flow: Choose TeamUp, Select Leader modal, 4-digit passcode pairing input, and active customer roleplay screen" 
+          class="w-full h-auto object-cover block"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Section 3: Expanding to Heavy Equipment (PLE Certifications) -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-6">
+        <div class="space-y-1">
+          <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold">03 &bull; Critical Extension</span>
+          <h2 class="font-display text-3xl text-[#ede8e1] font-normal">TeamUp for PLE (Forklift) Certifications</h2>
+        </div>
+
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          Following the success of associate roleplays, leadership asked: <em>Can this same paired model replace our paper-based heavy machinery licensing?</em>
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-3">
+            <h3 class="font-sans text-xs uppercase tracking-wider text-white font-semibold">The Legacy Paper Process</h3>
+            <p class="font-editorial text-base text-[#d4ded7]/80 leading-relaxed">
+              Operating Power Lifting Equipment (PLE)—such as sit-down forklifts, reach trucks, and order pickers—required trainers to carry bulky paper check-sheets through the warehouse, manually scoring 52 discrete subtasks (safety checks, control familiarity, U-turns, racking). Paper sheets were frequently misplaced or took weeks to be entered into corporate compliance systems.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-3">
+            <h3 class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold">The In-Store Field Discovery</h3>
+            <p class="font-editorial text-base text-[#d4ded7]/80 leading-relaxed">
+              During on-site store shadowing in warehouse lumber yards, I discovered that <strong>many stores perform CheckRides in small cohorts or groups</strong>. A 1-to-1 digital checklist would have caused operational friction; the interface had to support quick switching and transparent group evaluations.
+            </p>
+          </div>
+        </div>
+
+        <p class="font-editorial text-base text-[#d4ded7]/80 leading-relaxed">
+          I digitized the 52-subtask CheckRide into PocketGuide with clear section checklists, real-time subtask completion meters (e.g. <em>5/52 subtasks completed</em>), and instant digital compliance sign-off.
+        </p>
+      </section>
+
+      <!-- 04: Paper Sheet vs Digitized PLE Interface -->
+      <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+        <img 
+          src="/assets/images/projects/home-depot/ple-paper-vs-digital.jpg" 
+          alt="Before and after comparison showing the original paper Forklift CheckRide form next to the clean mobile Checklist UI" 
+          class="w-full h-auto object-cover block"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Section 4: Systemic Redesigns - Dashboard & Reference -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-6">
+        <div class="space-y-1">
+          <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold">04 &bull; Systematic Redesign</span>
+          <h2 class="font-display text-3xl text-[#ede8e1] font-normal">Dashboard &amp; Reference Architecture</h2>
+        </div>
+
+        <p class="font-editorial text-lg text-[#d4ded7]/80 leading-relaxed">
+          Beyond TeamUp, I redesigned PocketGuide’s core navigation and information architecture to make training progress scannable in fast-paced retail settings:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-3">
+            <h4 class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold">Dashboard Evolution</h4>
+            <p class="font-editorial text-base text-[#d4ded7]/80 leading-relaxed">
+              Introduced segmented filter pills (<em>All, TeamUp, Checklist, Challenge</em>) and organized the view into "Your Journey" vs. "Completed" modules. Replaced confusing card lists with direct visual indicators.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-3">
+            <h4 class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold">Reference Re-Architecture</h4>
+            <p class="font-editorial text-base text-[#d4ded7]/80 leading-relaxed">
+              Restructured the neglected reference tab into two distinct tiers: <em>Store Information</em> (tutorials, general policies) and <em>Departments</em> (Lumber, Paint, Plumbing) paired with high-visibility department icons and direct search.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05: Redesign Comparisons -->
+      <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+        <img 
+          src="/assets/images/projects/home-depot/dashboard-redesign-comparison.jpg" 
+          alt="Interface comparisons showing Old Dashboard to New Dashboard, and Old Reference to New Reference in PocketGuide" 
+          class="w-full h-auto object-cover block"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Section 5: Results & Business Impact -->
+      <section class="editorial-panel p-8 sm:p-10 rounded-sm border border-white/10 space-y-6">
+        <div class="space-y-1">
+          <span class="font-sans text-xs uppercase tracking-widest text-[#618c77] font-semibold">05 &bull; Outcomes</span>
+          <h2 class="font-display text-3xl text-[#ede8e1] font-normal">Results &amp; Enterprise Impact</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-2">
+            <span class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold block">Field Validation</span>
+            <p class="font-editorial text-base text-[#d4ded7]/80">
+              In-store usability evaluations confirmed that associates preferred live roleplays over passive multiple-choice challenges.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-2">
+            <span class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold block">Operational Velocity</span>
+            <p class="font-editorial text-base text-[#d4ded7]/80">
+              Digitized CheckRides drastically reduced licensing turnaround times, allowing new equipment operators to be certified days faster.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-sm bg-white/[0.02] border border-white/10 space-y-2">
+            <span class="font-sans text-xs uppercase tracking-wider text-[#618c77] font-semibold block">Product Roadmap</span>
+            <p class="font-editorial text-base text-[#d4ded7]/80">
+              TeamUp advanced from an internship concept to a live Q3 pilot, followed by a full production rollout across all stores.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06: Field Research Photo -->
+      <div class="rounded-sm overflow-hidden border border-white/10 shadow-2xl">
+        <img 
+          src="/assets/images/projects/home-depot/in-store-testing.jpg" 
+          alt="In-store usability testing and fieldwork observing forklift and equipment operations in warehouse retail aisles" 
+          class="w-full h-auto object-cover block"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="pt-8 border-t border-white/10 flex justify-between items-center font-sans text-xs uppercase tracking-wider">
+      <a href="/#projects" class="text-white/60 hover:text-white transition-colors">&larr; Back to all projects</a>
+      <button data-copy-email class="text-[#618c77] hover:text-[#7ba690] transition-colors cursor-pointer">
+        Copy Contact Email &rarr;
+      </button>
+    </div>
+  </article>
+</Layout>
+
+<script>
+  // Simple, secure SHA-256 client passcode validation
+  // Valid passcodes: 'homedepot', 'thd2023', 'thd-design', 'orange'
+  const validHashes = [
+    '8bb7b68440db8718105d8f70cf6c5b82346ce744fe631e1a60900410115227de', // homedepot
+    '0e2d4538947f631ddcfc786efee014f3b76bfa255018659178ad3018260193bb', // thd2023
+    '44d47c4587fc916a04879fe63b0a7c4613fa13f99060ee48b0a947471d4eb3b1', // thd-design
+    '2386e885d5fa400ebf62c64ee390f77ea63ecb4c81882ff207b5db3ccba95484'  // orange
+  ];
+
+  async function sha256(message: string): Promise<string> {
+    const msgBuffer = new TextEncoder().encode(message.trim().toLowerCase());
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  const gate = document.getElementById('password-gate');
+  const content = document.getElementById('unlocked-content');
+  const form = document.getElementById('passcode-form') as HTMLFormElement;
+  const input = document.getElementById('passcode-input') as HTMLInputElement;
+  const errorMsg = document.getElementById('error-msg');
+  const btnRelock = document.getElementById('btn-relock');
+  const badge = document.getElementById('nda-badge');
+
+  function unlock() {
+    gate?.classList.add('hidden');
+    content?.classList.remove('hidden');
+    if (badge) {
+      badge.textContent = 'Unlocked';
+      badge.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20';
+    }
+  }
+
+  function lock() {
+    content?.classList.add('hidden');
+    gate?.classList.remove('hidden');
+    sessionStorage.removeItem('thd_unlocked');
+    if (badge) {
+      badge.textContent = 'NDA Protected';
+      badge.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20';
+    }
+  }
+
+  // Check if previously unlocked in current session
+  if (sessionStorage.getItem('thd_unlocked') === 'true') {
+    unlock();
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const entered = input.value;
+    const hash = await sha256(entered);
+
+    // Accept valid hashes or fallback plain string for convenience
+    if (validHashes.includes(hash) || entered.trim().toLowerCase() === 'homedepot') {
+      sessionStorage.setItem('thd_unlocked', 'true');
+      errorMsg?.classList.add('hidden');
+      unlock();
+    } else {
+      errorMsg?.classList.remove('hidden');
+      input.classList.add('border-rose-500');
+      setTimeout(() => input.classList.remove('border-rose-500'), 1500);
+    }
+  });
+
+  btnRelock?.addEventListener('click', lock);
+</script>

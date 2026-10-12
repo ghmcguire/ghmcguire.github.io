@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ResumeModal from '../components/ResumeModal.astro';
+import Toast from '../components/Toast.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = "Gabe McGuire — Design Engineer",
+  description = "Gabe McGuire: Design Engineer bridging interaction design and systems engineering. Co-Founder at Munio & Senior at Georgia Tech."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-[#131614] text-[#ede8e1]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO & Metadata -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gabemcg.dev" />
+    <meta property="og:image" content="/assets/images/headshot.webp" />
+
+    <!-- Google Fonts: Cormorant Garamond, Instrument Serif, Newsreader, Plus Jakarta Sans, JetBrains Mono, Open Sans, Google Sans / Product Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" 
+      rel="stylesheet" 
+    />
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet" />
+  </head>
+  <body class="relative min-h-screen selection:bg-rose-300/20 selection:text-rose-200">
+    <!-- Subtle Organic Noise Texture -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <Navbar />
+
+    <!-- Main Content -->
+    <main class="relative z-10">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+
+    <!-- Interactive Resume Modal -->
+    <ResumeModal />
+
+    <!-- Global Toast Notification -->
+    <Toast />
+  </body>
+</html>

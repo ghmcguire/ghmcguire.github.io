@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icons from '../components/Icons.astro';
+---
+
+<Layout title="404 — Page Not Found | Gabe McGuire">
+  <div class="min-h-[60vh] flex items-center justify-center px-4">
+    <div class="glass-panel p-10 max-w-md w-full text-center space-y-5 border border-white/10">
+      <span class="text-4xl font-mono font-extrabold text-emerald-400">404</span>
+      <h1 class="text-2xl font-bold text-white tracking-tight">Route Not Found</h1>
+      <p class="text-xs sm:text-sm text-white/60">
+        The page you are looking for has either moved or doesn't exist in this coordinate space.
+      </p>
+      <div class="pt-2">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs transition-colors"
+        >
+          <Icons name="arrow-right" class="w-3.5 h-3.5 rotate-180" />
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
